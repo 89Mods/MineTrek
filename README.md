@@ -1,2 +1,2 @@
 # MineTrek
-Minecraft MineTrek mod for 1.8
+Minecraft MineTrek mod for 1.8.
