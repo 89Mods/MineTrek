@@ -1,0 +1,16 @@
+[
+{
+  "modid": "minetrek",
+  "name": "MineTrek",
+  "description": "To go where no Steve has ever gone.... before",
+  "version": "1.0",
+  "mcversion": "1.8",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["PLACEHOLDER"],
+  "credits": "Star Trek, duh!",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

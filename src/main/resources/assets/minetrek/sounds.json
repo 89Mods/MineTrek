@@ -1,0 +1,20 @@
+{
+  "phaser": {
+    "category": "master",
+    "sounds": [
+      "minetrek:phaser1"
+    ]
+  },
+  "disruptor": {
+    "category": "master",
+    "sounds": [
+      "minetrek:disruptor1"
+    ]
+  },
+    "alarm": {
+    "category": "master",
+    "sounds": [
+      "minetrek:alarm"
+    ]
+  }
+}

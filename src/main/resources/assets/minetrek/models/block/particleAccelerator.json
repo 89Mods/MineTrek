@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "minetrek:blocks/particleAccelerator_top",
+        "side": "minetrek:blocks/particleAccelerator_side"
+    }
+}

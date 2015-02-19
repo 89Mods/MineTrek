@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "minetrek:blocks/crusher_top",
+        "side": "minetrek:blocks/crusher_side"
+    }
+}

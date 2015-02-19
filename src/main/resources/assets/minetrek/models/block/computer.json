@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "minetrek:blocks/computer_side",
+        "down": "minetrek:blocks/computer_bottom",
+        "up": "minetrek:blocks/computer_top",
+        "north": "minetrek:blocks/computer_side",
+        "east": "minetrek:blocks/computer_side",
+        "south": "minetrek:blocks/computer_side",
+        "west": "minetrek:blocks/computer_side"
+    }
+}
