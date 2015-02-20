@@ -2,6 +2,9 @@ package net.minetrek.blocks.machines;
 
 import java.util.ArrayList;
 
+import cofh.api.energy.IEnergyConnection;
+import cofh.api.energy.IEnergyHandler;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -16,7 +19,9 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
 
-public class CrusherTileEntity extends TileEntity implements ISidedInventory,IUpdatePlayerListBox{
+public class CrusherTileEntity extends TileEntity implements ISidedInventory,IUpdatePlayerListBox, IEnergyHandler {
+	private int energyStored = 200;
+	private int maxEnergyStored = 1000;
 	private final ItemStack[] inventory;
 	private final static int COOK_TIME = 150;
 	private int time_remaining;
@@ -115,6 +120,7 @@ public class CrusherTileEntity extends TileEntity implements ISidedInventory,IUp
 
 		compound.setBoolean("cooking", isCooking);
 		compound.setInteger("remaining", time_remaining);
+		compound.setInteger("energy", energyStored);
 	}
 
 	@Override
@@ -134,6 +140,7 @@ public class CrusherTileEntity extends TileEntity implements ISidedInventory,IUp
 
 		isCooking = compound.getBoolean("cooking");
 		time_remaining = compound.getInteger("remaining");
+		energyStored = compound.getInteger("energy");
 	}
 
 	public static void addRecipe(ItemStack in, ItemStack out) {
@@ -145,7 +152,6 @@ public class CrusherTileEntity extends TileEntity implements ISidedInventory,IUp
 	}
 	@Override
 	public void update() {
-
 		if (this.worldObj.isRemote)
 			return;
 
@@ -271,5 +277,33 @@ public class CrusherTileEntity extends TileEntity implements ISidedInventory,IUp
 	public boolean canExtractItem(int index, ItemStack stack,
 			EnumFacing direction) {
 		return true;
+	}
+	@Override
+	public boolean canConnectEnergy(EnumFacing from) {
+		return true;
+	}
+	@Override
+	public int receiveEnergy(EnumFacing from, int maxReceive, boolean simulate) {
+		if(energyStored < maxEnergyStored){
+		return 15;
+		}else{
+			return 0;
+		}
+	}
+	@Override
+	public int extractEnergy(EnumFacing from, int maxExtract, boolean simulate) {
+		if(energyStored == 0){
+		return 0;
+		}else{
+			return 15;
+		}
+	}
+	@Override
+	public int getEnergyStored(EnumFacing from) {
+		return energyStored;
+	}
+	@Override
+	public int getMaxEnergyStored(EnumFacing from) {
+		return maxEnergyStored;
 	}
 }

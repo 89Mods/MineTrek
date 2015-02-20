@@ -1,5 +1,7 @@
 package net.minetrek.blocks.machines;
 
+import java.awt.Color;
+
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.Minecraft;
@@ -26,7 +28,7 @@ public class CrusherGui extends GuiContainer {
 		if (entity.isCooking()) {
 			int bars = entity.getBurnTimeRemainingScaled(6);
 
-			System.out.println(bars);
+			//System.out.println(bars);
 
 			int start = 95;
 
@@ -36,6 +38,7 @@ public class CrusherGui extends GuiContainer {
 				start += 5;
 			}
 		}
+		this.drawRect(guiLeft + 9, guiTop + 78, guiLeft + 25, guiTop + 78 - ((entity.getEnergyStored(null) + 1) / 33), Integer.MAX_VALUE);
 	}
 	
 }
