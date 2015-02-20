@@ -46,6 +46,7 @@ public class MineTrekItems {
 	public static Item steel_dust;
 	public static Item antimaterstorage_full;
 	public static Item tritanium_pickaxe;
+	public static Item antimatterBattery;
 	public static void initialize(CreativeTabs tab) {
 		//ingots
 		aluminum_ingot = registerIngot("aluminumIngot");
@@ -97,6 +98,9 @@ public class MineTrekItems {
 		antimaterstorage_full = new Item().setCreativeTab(tab).setUnlocalizedName("antimaterstorage_full").setMaxStackSize(1);
 		GameRegistry.registerItem(antimaterstorage_full, "antimaterstorage_full");
 		itemList.add("antimaterstorage_full");
+		antimatterBattery = new ItemAntimatterBattery().setCreativeTab(tab).setUnlocalizedName("antimatterBattery").setMaxStackSize(1);
+		GameRegistry.registerItem(antimatterBattery, "antimatterBattery");
+		itemList.add("antimatterBattery");
 		
 		//dusts
 		bronze_dust = registerDust("bronzeDust");
