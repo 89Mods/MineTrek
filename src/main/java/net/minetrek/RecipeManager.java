@@ -24,25 +24,17 @@ public class RecipeManager {
 		//Smelting
 				GameRegistry.addSmelting(MineTrekOres.bauxite_ore, new ItemStack(MineTrekItems.aluminum_ingot), 1.0F);
 				GameRegistry.addSmelting(MineTrekOres.tritanium_ore, new ItemStack(MineTrekItems.tritanium_ingot), 1.0F);
-				GameRegistry.addSmelting(MineTrekOres.duranium_ore, new ItemStack(MineTrekItems.duranium_ingot), 1.0F);
-				GameRegistry.addSmelting(MineTrekOres.chromite_ore, new ItemStack(MineTrekItems.chromium_ingot), 1.0F);
-				GameRegistry.addSmelting(MineTrekOres.iridium_ore, new ItemStack(MineTrekItems.iridium_ingot), 1.0F);
-				GameRegistry.addSmelting(MineTrekOres.platinum_ore, new ItemStack(MineTrekItems.platinum_ingot), 1.0F);
-				GameRegistry.addSmelting(MineTrekOres.plutonium_ore, new ItemStack(MineTrekItems.plutonium_ingot), 1.0F);
 				GameRegistry.addSmelting(MineTrekOres.silicon_ore, new ItemStack(MineTrekItems.silicon_ingot), 1.0F);
-				GameRegistry.addSmelting(MineTrekOres.uranium_ore, new ItemStack(MineTrekItems.uranium_ingot), 1.0F);
-				GameRegistry.addSmelting(MineTrekOres.invisible_ore, new ItemStack(MineTrekItems.invisible_ingot), 1.0F);
 				GameRegistry.addSmelting(MineTrekOres.tin_ore, new ItemStack(MineTrekItems.tin_ingot), 1.0F);
 				GameRegistry.addSmelting(MineTrekOres.copper_ore, new ItemStack(MineTrekItems.copper_ingot), 1.0F);
 				GameRegistry.addSmelting(MineTrekOres.titanium_ore, new ItemStack(MineTrekItems.titanium_ingot), 1.0F);
-				GameRegistry.addSmelting(MineTrekOres.tungsten_ore, new ItemStack(MineTrekItems.tungsten_ingot), 1.0F);
 				GameRegistry.addSmelting(MineTrekOres.dilithium_ore, new ItemStack(MineTrekItems.dilithium_crystal), 1.0F);
 				GameRegistry.addSmelting(MineTrekItems.bronze_dust, new ItemStack(MineTrekItems.bronze_ingot), 1.0F);
 				GameRegistry.addSmelting(MineTrekItems.copper_dust, new ItemStack(MineTrekItems.copper_ingot), 1.0F);
 				GameRegistry.addSmelting(MineTrekItems.tin_dust, new ItemStack(MineTrekItems.tin_ingot), 1.0F);
 				GameRegistry.addSmelting(MineTrekItems.aluminum_dust, new ItemStack(MineTrekItems.aluminum_ingot), 1.0F);
 				GameRegistry.addSmelting(MineTrekItems.steel_dust, new ItemStack(MineTrekItems.steel_ingot), 1.0F);
-				GameRegistry.addSmelting(MineTrekItems.invisible_dust, new ItemStack(MineTrekItems.invisible_ingot), 1.0F);
+				GameRegistry.addSmelting(MineTrekItems.rawAdvancedCircuitBoard, new ItemStack(MineTrekItems.advancedPCB), 1.0F);
 		//crafting
 				 //GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MineTrekItems.coil,1), new Object[] {"###", "#X#", "###", '#', "ingotCopper", 'X', Items.iron_ingot}));
 				 GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MineTrekBlocks.cable,4),new Object[] {"###", "XXX", "###", '#', MineTrekItems.silicon_ingot, 'X', "ingotCopper"}));
@@ -61,13 +53,18 @@ public class RecipeManager {
 				 GameRegistry.addRecipe(new ItemStack(MineTrekBlocks.computer,1),new Object[] {"#X#", "#Y#", "#X#", '#', Items.iron_ingot, Character.valueOf('X'), new ItemStack(Items.dye,1,4), 'Y', Items.redstone});
 				 GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MineTrekItems.antimatterBattery,1),new Object[] {" # ", "XXX", "YYY", 'Y', Items.redstone, '#', MineTrekItems.antimaterstorage_full, 'X', "ingotCopper"}));
 				 GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.bucket,1),new Object[] {"# #", " # ", '#', "tin"}));
+				 GameRegistry.addRecipe(new ItemStack(MineTrekItems.steel_dust,2),new Object[] {" # ", "#X#", " # ", '#', Items.coal, 'X', Items.iron_ingot});
+				 GameRegistry.addRecipe(new ItemStack(MineTrekItems.tritanium_nugget,9),new Object[] {"#", '#', MineTrekItems.tritanium_ingot});
+				 GameRegistry.addRecipe(new ItemStack(MineTrekItems.tritanium_ingot,1),new Object[] {"###", "###", "###", '#', MineTrekItems.tritanium_nugget});
+				 GameRegistry.addRecipe(new ItemStack(MineTrekItems.rawAdvancedCircuitBoard,1),new Object[] {"#X", "Y ", '#', MineTrekItems.tritanium_nugget, 'X', Items.clay_ball, Character.valueOf('Y'), new ItemStack(Items.dye,1,2)});
+				 GameRegistry.addRecipe(new ItemStack(MineTrekItems.advanced_empty_card,1),new Object[] {"#  ", "#X ", "#Y ", '#', MineTrekItems.tritanium_nugget, 'X', MineTrekItems.advancedPCB, 'Y', Items.gold_nugget});
+				 GameRegistry.addRecipe(new ItemStack(MineTrekItems.lol_card,1),new Object[] {"XYX", " Z ", 'X', Items.redstone, 'Y', Blocks.dirt, 'Z', MineTrekItems.advanced_empty_card});
 	   //machines
 				 MagnetizerTileEntity.addRecipe(new ItemStack(Items.iron_ingot,1), new ItemStack(MineTrekItems.magnet,1));
 				 LaserElectronManipulatorTileEntity.addRecipe(new ItemStack(MineTrekItems.antimaterstorage_water,1), new ItemStack(MineTrekItems.antimaterstorage_deuterium));
 				 LaserElectronManipulatorTileEntity.addRecipe(new ItemStack(MineTrekItems.aluminum_ingot,1), new ItemStack(MineTrekBlocks.transparent_aluminum,1));
 				 CrusherTileEntity.addRecipe(new ItemStack(MineTrekItems.copper_ingot,1), new ItemStack(MineTrekItems.copper_dust,1));
 				 CrusherTileEntity.addRecipe(new ItemStack(MineTrekItems.tin_ingot,1), new ItemStack(MineTrekItems.tin_dust,1));
-				 CrusherTileEntity.addRecipe(new ItemStack(MineTrekItems.invisible_ingot,1), new ItemStack(MineTrekItems.invisible_dust,1));
 				 CrusherTileEntity.addRecipe(new ItemStack(MineTrekItems.steel_ingot,1), new ItemStack(MineTrekItems.steel_dust,1));
 				 CrusherTileEntity.addRecipe(new ItemStack(MineTrekItems.aluminum_ingot,1), new ItemStack(MineTrekItems.aluminum_dust,1));
 				 CrusherTileEntity.addRecipe(new ItemStack(MineTrekItems.bronze_ingot,1), new ItemStack(MineTrekItems.bronze_dust,1));

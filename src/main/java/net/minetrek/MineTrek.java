@@ -37,9 +37,10 @@ import net.minetrek.client.gui.GuiHandler;
 import net.minetrek.dimension.MineTrekDimension;
 import net.minetrek.entities.mob.EntityBorg;
 import net.minetrek.entities.projectiles.EntityPhaserBolt;
+import net.minetrek.items.DriverCardLol;
 import net.minetrek.items.MineTrekItems;
 
-@Mod(modid = MineTrek.MODID, version = MineTrek.VERSION, name = MineTrek.NAME)
+@Mod(modid = MineTrek.MODID, version = MineTrek.VERSION, name = MineTrek.NAME,dependencies = "required-after:OpenComputers@[1.5.6,)")
 public class MineTrek {
     public static final String MODID = "minetrek";
     public static final String VERSION = "0.0.1";
@@ -92,9 +93,7 @@ public class MineTrek {
 		MineTrekBiomes.initialize();
 		MineTrekDimension.initialize();
 		if(crash){
-			FMLCommonHandler fch = new FMLCommonHandler();
-			fch.exitJava(1,true);
-			//System.exit(1);
+			System.exit(1);
 		}
 		RecipeManager.addRecipes();
 		
@@ -106,7 +105,7 @@ public class MineTrek {
 	@EventHandler
 	public void init(FMLInitializationEvent evt){
         if(FMLCommonHandler.instance().getSide().isClient()) ClientProxy.init();
-		
+        li.cil.oc.api.Driver.add(new DriverCardLol());
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent evt){

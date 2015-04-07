@@ -16,21 +16,12 @@ public class MineTrekItems {
 	public static List<String> itemList = new ArrayList<String>();
 	public static Item dilithium_crystal;
 	public static Item bronze_ingot;
-	public static Item brass_ingot;
-	public static Item chromium_ingot;
 	public static Item copper_ingot;
-	public static Item duranium_ingot;
-	public static Item invisible_ingot;
-	public static Item iridium_ingot;
-	public static Item platinum_ingot;
-	public static Item plutonium_ingot;
 	public static Item silicon_ingot;
 	public static Item steel_ingot;
 	public static Item tin_ingot;
 	public static Item titanium_ingot;
 	public static Item tritanium_ingot;
-	public static Item tungsten_ingot;
-	public static Item uranium_ingot;
 	public static Item aluminum_ingot;
 	public static Item phaser;
 	public static Item coil;
@@ -42,30 +33,25 @@ public class MineTrekItems {
 	public static Item tin_dust;
 	public static Item copper_dust;
 	public static Item aluminum_dust;
-	public static Item invisible_dust;
-	public static Item steel_dust;
 	public static Item antimaterstorage_full;
 	public static Item tritanium_pickaxe;
 	public static Item antimatterBattery;
+	public static Item steel_dust;
+	public static Item lol_card;
+	public static Item advanced_empty_card;
+	public static Item tritanium_nugget;
+	public static Item rawAdvancedCircuitBoard;
+	public static Item advancedPCB;
 	public static void initialize(CreativeTabs tab) {
 		//ingots
 		aluminum_ingot = registerIngot("aluminumIngot");
 		bronze_ingot = registerIngot("bronzeIngot");
-		brass_ingot = registerIngot("brassIngot");
-		chromium_ingot = registerIngot("chromiumIngot");
 		copper_ingot = registerIngot("copperIngot");
-		duranium_ingot = registerIngot("duraniumIngot");
-		invisible_ingot = registerIngot("invisibleIngot");
-		iridium_ingot = registerIngot("iridiumIngot");
-		platinum_ingot = registerIngot("platinumIngot");
-		plutonium_ingot = registerIngot("plutoniumIngot");
 		silicon_ingot = registerIngot("siliconIngot");
 		steel_ingot = registerIngot("steelIngot");
 		tin_ingot = registerIngot("tinIngot");
 		titanium_ingot = registerIngot("titaniumIngot");
 		tritanium_ingot = registerIngot("tritaniumIngot");
-		tungsten_ingot = registerIngot("tungstenIngot");
-		uranium_ingot = registerIngot("uraniumIngot");
 		OreDictionary.registerOre("ingotCopper", copper_ingot);
 		OreDictionary.registerOre("ingotTin", tin_ingot);
 		OreDictionary.registerOre("ingotBronze", bronze_ingot);
@@ -76,6 +62,9 @@ public class MineTrekItems {
 		tritanium_pickaxe = new MineTrekPickaxe(ToolMaterial.EMERALD).setCreativeTab(tab).setUnlocalizedName("tritanium_pickaxe");
 		GameRegistry.registerItem(tritanium_pickaxe, "tritanium_pickaxe");
 		itemList.add("tritanium_pickaxe");
+		lol_card = new ItemCardLol().setCreativeTab(tab);
+		GameRegistry.registerItem(lol_card, "lol_card");
+		itemList.add("lol_card");
 		//other
 		dilithium_crystal = new DilithiumCrystal().setCreativeTab(tab);
 		GameRegistry.registerItem(dilithium_crystal, "dilithiumCrystal");
@@ -101,7 +90,18 @@ public class MineTrekItems {
 		antimatterBattery = new ItemAntimatterBattery().setCreativeTab(tab).setUnlocalizedName("antimatterBattery").setMaxStackSize(1);
 		GameRegistry.registerItem(antimatterBattery, "antimatterBattery");
 		itemList.add("antimatterBattery");
-		
+		advanced_empty_card = new Item().setUnlocalizedName("advanced_empty_card").setCreativeTab(tab);
+		GameRegistry.registerItem(advanced_empty_card, "advanced_empty_card");
+		itemList.add("advanced_empty_card");
+		tritanium_nugget = new Item().setUnlocalizedName("tritanium_nugget").setCreativeTab(tab);
+		GameRegistry.registerItem(tritanium_nugget, "tritanium_nugget");
+		itemList.add("tritanium_nugget");
+		rawAdvancedCircuitBoard = new Item().setUnlocalizedName("rawAdvancedCircuitBoard").setCreativeTab(tab);
+		GameRegistry.registerItem(rawAdvancedCircuitBoard, "rawAdvancedCircuitBoard");
+		itemList.add("rawAdvancedCircuitBoard");
+		advancedPCB = new Item().setUnlocalizedName("advancedPCB").setCreativeTab(tab);
+		GameRegistry.registerItem(advancedPCB, "advancedPCB");
+		itemList.add("advancedPCB");
 		//dusts
 		bronze_dust = registerDust("bronzeDust");
 		OreDictionary.registerOre("dustBronze", bronze_dust);
@@ -110,7 +110,6 @@ public class MineTrekItems {
 		tin_dust = registerDust("tinDust");
 		OreDictionary.registerOre("dustTin", tin_dust);
 		aluminum_dust = registerDust("aluminumDust");
-		invisible_dust = registerDust("invisibleDust");
 		steel_dust = registerDust("steelDust");
 		OreDictionary.registerOre("dustSteel", steel_dust);
 		
