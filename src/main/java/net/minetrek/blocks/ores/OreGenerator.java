@@ -1,8 +1,15 @@
 package net.minetrek.blocks.ores;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
+import cofh.lib.world.WorldGenAdvLakes;
+import cofh.lib.world.WorldGenSpike;
+import cofh.lib.world.WorldGenStalactite;
+import cofh.lib.util.WeightedRandomBlock;
+
+import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -42,8 +49,11 @@ public class OreGenerator implements IWorldGenerator {
 				(new WorldGenMinable(o.getDefaultState(), o.blocksPerVein(0))).generate(world, random, new BlockPos(firstBlockXCoord, firstBlockYCoord, firstBlockZCoord));
 
 			}
+		//4311813251654730919
 	}
 	public void addOre(Ore g) {
 		ores.add(g);
 	}
+	
+	
 }
