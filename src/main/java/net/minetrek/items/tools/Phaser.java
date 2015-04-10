@@ -17,7 +17,6 @@ public class Phaser extends Item {
 		setMaxDamage(100);
 		
 	}
-	@SideOnly(Side.CLIENT)
 	@Override
 	public ItemStack onItemRightClick(ItemStack is, World par2World, EntityPlayer par3EntityPlayer) {
 
