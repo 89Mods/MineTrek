@@ -1,6 +1,5 @@
 package net.minetrek.blocks.machines;
 
-import java.awt.Color;
 
 import org.lwjgl.opengl.GL11;
 
@@ -18,6 +17,12 @@ public class CrusherGui extends GuiContainer {
 		ySize = 165;
 		this.entity = entity;
 	}
+	@Override
+    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+    {
+		//String s = "Power:" + entity.getEnergyStored(null);
+		//this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 6, 11743532);
+    }
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int k, int j) {
 		GL11.glColor4f(1F, 1F, 1F, 1F);
@@ -38,7 +43,6 @@ public class CrusherGui extends GuiContainer {
 				start += 5;
 			}
 		}
-		this.drawRect(guiLeft + 9, guiTop + 78, guiLeft + 25, guiTop + 78 - ((entity.getEnergyStored(null) + 1) / 33), Integer.MAX_VALUE);
 	}
 	
 }

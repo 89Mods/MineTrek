@@ -50,7 +50,6 @@ public class RecipeManager {
 				 GameRegistry.addRecipe(new ItemStack(MineTrekItems.phaser,1),new Object[] {" #X", "#Y#", "Z# ", '#', MineTrekItems.aluminum_ingot, 'Z', Blocks.stone_button, 'X', Blocks.glass, 'Y', MineTrekItems.antimaterstorage_full});
 				 GameRegistry.addRecipe(new ItemStack(MineTrekItems.tritanium_pickaxe,1),new Object[] {"###", " X ", " X ", '#', MineTrekItems.tritanium_ingot, 'X', Items.stick});
 				 GameRegistry.addRecipe(new ItemStack(MineTrekBlocks.antimaterbomb,1),new Object[] {"X#X", "#Y#", "X#X", '#', MineTrekItems.antimaterstorage_full, 'X', Items.gunpowder, 'Y', Blocks.tnt});
-				 GameRegistry.addRecipe(new ItemStack(MineTrekBlocks.computer,1),new Object[] {"#X#", "#Y#", "#X#", '#', Items.iron_ingot, Character.valueOf('X'), new ItemStack(Items.dye,1,4), 'Y', Items.redstone});
 				 GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MineTrekItems.antimatterBattery,1),new Object[] {" # ", "XXX", "YYY", 'Y', Items.redstone, '#', MineTrekItems.antimaterstorage_full, 'X', "ingotCopper"}));
 				 GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.bucket,1),new Object[] {"# #", " # ", '#', "tin"}));
 				 GameRegistry.addRecipe(new ItemStack(MineTrekItems.steel_dust,2),new Object[] {" # ", "#X#", " # ", '#', Items.coal, 'X', Items.iron_ingot});

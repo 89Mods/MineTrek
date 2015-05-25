@@ -22,7 +22,7 @@ public class MineTrekBlocks {
 	public static Block particleAccelerator;
 	public static Block antimaterbomb;
 	public static Block warpcore;
-	public static Block computer;
+	public static Block torpedo_tube;
 	public static void initialize(CreativeTabs ct) {
 		transparent_aluminum = new TransparentAluminum().setCreativeTab(ct);
 		GameRegistry.registerBlock(transparent_aluminum, "transparent_aluminum");
@@ -51,9 +51,8 @@ public class MineTrekBlocks {
 		warpcore = new BlockWarpcore().setUnlocalizedName("warpcore").setCreativeTab(ct).setStepSound(Block.soundTypeMetal).setHardness(3.0f).setResistance(10.0f);
 		GameRegistry.registerBlock(warpcore, "warpcore");
 		blockList.add("warpcore");
-		computer = new BlockComputer().setCreativeTab(ct).setStepSound(Block.soundTypeMetal).setHardness(1.0f).setResistance(5.0f).setUnlocalizedName("computer");
-		GameRegistry.registerBlock(computer, "computer");
-		blockList.add("computer");
-		
+		torpedo_tube = new BlockTorpedoTube().setHardness(5.0F).setResistance(10.0F).setCreativeTab(ct).setUnlocalizedName("torpedo_tube");
+		GameRegistry.registerBlock(torpedo_tube, "torpedo_tube");
+		blockList.add("torpedo_tube");
 	}
 }

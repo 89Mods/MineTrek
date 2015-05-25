@@ -15,11 +15,14 @@ public class EntityPhaserBolt extends EntityThrowable {
 	public Entity throwe;
 	public EntityPhaserBolt(World world){
 		super(world);
+        this.renderDistanceWeight = 10.0D;
+        this.setSize(0.5F, 0.5F);
 		init();
 	}
 	public EntityPhaserBolt(World par1World, EntityLivingBase entity) {
 		super(par1World, entity);
 		throwe = entity;
+        this.setSize(0.5F, 0.5F);
 		init();
 	}
 	public EntityPhaserBolt(World par1World, double par2, double par4, double par6) {

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "minetrek:torpedo_tube" },
+        "facing=south": { "model": "minetrek:torpedo_tube", "y": 180 },
+        "facing=west":  { "model": "minetrek:torpedo_tube", "y": 270 },
+        "facing=east":  { "model": "minetrek:torpedo_tube", "y": 90 }
+    }
+}
