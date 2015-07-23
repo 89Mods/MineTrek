@@ -42,6 +42,7 @@ public class MineTrekItems {
 	public static Item tritanium_nugget;
 	public static Item rawAdvancedCircuitBoard;
 	public static Item advancedPCB;
+	public static Item isolinear_chip;
 	public static void initialize(CreativeTabs tab) {
 		//ingots
 		aluminum_ingot = registerIngot("aluminumIngot");
@@ -62,9 +63,13 @@ public class MineTrekItems {
 		tritanium_pickaxe = new MineTrekPickaxe(ToolMaterial.EMERALD).setCreativeTab(tab).setUnlocalizedName("tritanium_pickaxe");
 		GameRegistry.registerItem(tritanium_pickaxe, "tritanium_pickaxe");
 		itemList.add("tritanium_pickaxe");
+		//computer
 		lol_card = new ItemCardLol().setCreativeTab(tab);
 		GameRegistry.registerItem(lol_card, "lol_card");
 		itemList.add("lol_card");
+		isolinear_chip =  new ItemIsolinearChip().setCreativeTab(tab);
+		GameRegistry.registerItem(isolinear_chip, "isolinear_chip");
+		itemList.add("isolinear_chip");
 		//other
 		dilithium_crystal = new DilithiumCrystal().setCreativeTab(tab);
 		GameRegistry.registerItem(dilithium_crystal, "dilithiumCrystal");

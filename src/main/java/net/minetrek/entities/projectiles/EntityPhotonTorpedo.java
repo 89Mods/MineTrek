@@ -8,24 +8,22 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import net.minetrek.MineTrek;
-import net.minetrek.items.MineTrekItems;
 
-public class EntityPhaserBolt extends EntityThrowable {
+public class EntityPhotonTorpedo extends EntityThrowable {
 	public Entity throwe;
-	public EntityPhaserBolt(World world){
+	public EntityPhotonTorpedo(World world){
 		super(world);
         this.renderDistanceWeight = 10.0D;
         this.setSize(0.5F, 0.5F);
 		init();
 	}
-	public EntityPhaserBolt(World par1World, EntityLivingBase entity) {
+	public EntityPhotonTorpedo(World par1World, EntityLivingBase entity) {
 		super(par1World, entity);
 		throwe = entity;
         this.setSize(0.5F, 0.5F);
 		init();
 	}
-	public EntityPhaserBolt(World par1World, double par2, double par4, double par6) {
+	public EntityPhotonTorpedo(World par1World, double par2, double par4, double par6) {
 		super(par1World, par2, par4, par6);
 		init();
 	}
@@ -41,18 +39,8 @@ public class EntityPhaserBolt extends EntityThrowable {
 
 		if (worldObj.isRemote)
 			return;
-
-		if (mop.entityHit != null)
-			mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), 10);
-		else {
-			BlockPos pos = mop.getBlockPos();
-			Block b = this.worldObj.getBlockState(pos).getBlock();
-			float hd = b.getBlockHardness(worldObj, pos);
-			if (hd < 10.0F && hd > -1) {
-				worldObj.destroyBlock(pos, true);
-			}
-		}
-
+		
+		this.worldObj.createExplosion(this, mop.getBlockPos().getX(), mop.getBlockPos().getY(), mop.getBlockPos().getZ(), 10.7F, true);
 	}
 	@Override
 	protected float getGravityVelocity() {

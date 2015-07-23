@@ -1,4 +1,4 @@
-package net.minetrek.entities.projectiles;
+package net.minetrek.client.render;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
+import net.minetrek.entities.projectiles.EntityPhaserBolt;
 
 public class PhaserBoltRenderer extends Render {
 	private static final ResourceLocation arrowTextures = new ResourceLocation("minetrek:textures/entity/arrow.png");

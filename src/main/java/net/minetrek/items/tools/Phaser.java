@@ -9,6 +9,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minetrek.entities.projectiles.EntityPhaserBolt;
+import net.minetrek.entities.projectiles.EntityPhotonTorpedo;
 
 public class Phaser extends Item {
 	public Phaser() {

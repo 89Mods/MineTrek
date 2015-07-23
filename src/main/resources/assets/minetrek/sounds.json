@@ -1,18 +1,15 @@
 {
   "phaser": {
-    "category": "master",
     "sounds": [
       "minetrek:phaser1"
     ]
   },
-  "disruptor": {
-    "category": "master",
+  "photonTorpedo": {
     "sounds": [
-      "minetrek:disruptor1"
+      "minetrek:photonTorpedo"
     ]
   },
     "alarm": {
-    "category": "master",
     "sounds": [
       "minetrek:alarm"
     ]

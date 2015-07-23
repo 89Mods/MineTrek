@@ -1,6 +1,7 @@
 package net.minetrek.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
@@ -8,11 +9,13 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class BlockTorpedoTube extends Block {
+public class BlockTorpedoTube extends BlockContainer {
 	
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	
@@ -21,12 +24,17 @@ public class BlockTorpedoTube extends Block {
 		setHarvestLevel("pickaxe",1);
 		setStepSound(this.soundTypeMetal);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		GameRegistry.registerTileEntity(TileEntityTorpedoTube.class, "torpedoTubeTileEntity");
 		
 	}
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
     {
         this.setDefaultFacing(worldIn, pos, state);
     }
+	@Override
+	public TileEntity createNewTileEntity(World var1, int var2) {
+		return new TileEntityTorpedoTube();
+	}
     private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state)
     {
         if (!worldIn.isRemote)
@@ -65,6 +73,7 @@ public class BlockTorpedoTube extends Block {
     {
     	worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
     }
+    
     public IBlockState getStateFromMeta(int meta)
     {
         EnumFacing enumfacing = EnumFacing.getFront(meta);
@@ -85,5 +94,7 @@ public class BlockTorpedoTube extends Block {
     {
         return new BlockState(this, new IProperty[] {FACING});
     }
-    
+    public int getRenderType(){
+    	return 3;
+    }
 }

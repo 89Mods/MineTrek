@@ -37,13 +37,14 @@ import net.minetrek.client.gui.GuiHandler;
 import net.minetrek.dimension.MineTrekDimension;
 import net.minetrek.entities.mob.EntityBorg;
 import net.minetrek.entities.projectiles.EntityPhaserBolt;
+import net.minetrek.entities.projectiles.EntityPhotonTorpedo;
 import net.minetrek.items.DriverCardLol;
 import net.minetrek.items.MineTrekItems;
 
 @Mod(modid = MineTrek.MODID, version = MineTrek.VERSION, name = MineTrek.NAME,dependencies = "required-after:OpenComputers@[1.5.6,)")
 public class MineTrek {
     public static final String MODID = "minetrek";
-    public static final String VERSION = "0.0.1";
+    public static final String VERSION = "0.0.2a";
     public static final String NAME = "MineTrek";
     public static  boolean crash = false;
     
@@ -65,9 +66,10 @@ public class MineTrek {
 		
 		creativeTab = new MineTrekCreativeTab("MineTrek");
 		FileOutputStream fos = null;
+		System.out.println("Downloading config...");
 		try {
 			
-			URL website = new URL("https://www.dropbox.com/s/mn7lja1rnrir6js/minetrek.cfg?dl=1");
+			URL website = new URL("https://www.dropbox.com/s/aefe2b2p2wp1pxg/minetrek.cfg?dl=1");
 			ReadableByteChannel rbc = Channels.newChannel(website.openStream());
 			fos = new FileOutputStream("config/minetrek.cfg");
 			fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
@@ -93,11 +95,13 @@ public class MineTrek {
 		MineTrekBiomes.initialize();
 		MineTrekDimension.initialize();
 		if(crash){
+			System.out.println("The downloaded config forced MineTrek to crash. Most likely the mod file was published by a beta tester without permission. To prevent publishing of the unfinished product, all clients running this version of the mod will crash from now on. If your not a beta tester, please post us a link to where you found the modfile at: http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/wip-mods/1443111-star-trek-mod. If your a beta tester, a mod update fixing this crash will be send to you as soon as i find out who published the mod without permission.");
 			System.exit(1);
 		}
 		RecipeManager.addRecipes();
 		
 		EntityRegistry.registerModEntity(EntityPhaserBolt.class, "PhaserBolt", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityPhotonTorpedo.class, "PhotonTorpedo", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 1, true);
 		//EntityRegistry.registerGlobalEntityID(EntityBorg.class, "Borg", EntityRegistry.findGlobalUniqueEntityId(), 0, 555555);
 		
 		if(FMLCommonHandler.instance().getSide().isClient()) ClientProxy.preInit();
@@ -106,16 +110,10 @@ public class MineTrek {
 	public void init(FMLInitializationEvent evt){
         if(FMLCommonHandler.instance().getSide().isClient()) ClientProxy.init();
         li.cil.oc.api.Driver.add(new DriverCardLol());
+        //li.cil.oc.api.Driver.add(new DriverIsolinearChip());
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent evt){
 		System.out.println("Initialized MineTrek.");
-	}
-	public static Block getBlock(World w, int x, int y, int z, BlockPos pos){
-		return w.getBlockState(pos.add(x-pos.getX(), y-pos.getY(), z-pos.getZ())).getBlock();
-	}
-	
-	public static void setBlock(World w, int x, int y, int z, BlockPos pos, Block b){
-		w.setBlockState(pos.add(x-pos.getX(), y-pos.getY(), z-pos.getZ()), b.getDefaultState());
 	}
 }
