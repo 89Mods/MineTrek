@@ -15,47 +15,32 @@ import net.minetrek.items.tools.Phaser;
 public class MineTrekItems {
 	public static List<String> itemList = new ArrayList<String>();
 	public static Item dilithium_crystal;
-	public static Item bronze_ingot;
-	public static Item copper_ingot;
-	public static Item silicon_ingot;
-	public static Item steel_ingot;
-	public static Item tin_ingot;
-	public static Item titanium_ingot;
 	public static Item tritanium_ingot;
 	public static Item aluminum_ingot;
 	public static Item phaser;
 	public static Item coil;
-	public static Item bronze_dust;
 	public static Item magnet;
 	public static Item antimaterstorage;
 	public static Item antimaterstorage_water;
 	public static Item antimaterstorage_deuterium;
-	public static Item tin_dust;
-	public static Item copper_dust;
-	public static Item aluminum_dust;
 	public static Item antimaterstorage_full;
 	public static Item tritanium_pickaxe;
 	public static Item antimatterBattery;
-	public static Item steel_dust;
 	public static Item lol_card;
 	public static Item advanced_empty_card;
-	public static Item tritanium_nugget;
 	public static Item rawAdvancedCircuitBoard;
 	public static Item advancedPCB;
 	public static Item isolinear_chip;
+	public static Item nitrium_ingot;
+	public static Item nitrium_nugget;
 	public static void initialize(CreativeTabs tab) {
 		//ingots
 		aluminum_ingot = registerIngot("aluminumIngot");
-		bronze_ingot = registerIngot("bronzeIngot");
-		copper_ingot = registerIngot("copperIngot");
-		silicon_ingot = registerIngot("siliconIngot");
-		steel_ingot = registerIngot("steelIngot");
-		tin_ingot = registerIngot("tinIngot");
-		titanium_ingot = registerIngot("titaniumIngot");
 		tritanium_ingot = registerIngot("tritaniumIngot");
-		OreDictionary.registerOre("ingotCopper", copper_ingot);
-		OreDictionary.registerOre("ingotTin", tin_ingot);
-		OreDictionary.registerOre("ingotBronze", bronze_ingot);
+		nitrium_ingot = registerIngot("nitriumIngot");
+		OreDictionary.registerOre("ingotTritanium", tritanium_ingot);
+		OreDictionary.registerOre("ingotNitrium", nitrium_ingot);
+		OreDictionary.registerOre("ingotAluminum", aluminum_ingot);
 		//tools
 		phaser = new Phaser().setCreativeTab(tab);
 		GameRegistry.registerItem(phaser, "phaser");
@@ -98,26 +83,15 @@ public class MineTrekItems {
 		advanced_empty_card = new Item().setUnlocalizedName("advanced_empty_card").setCreativeTab(tab);
 		GameRegistry.registerItem(advanced_empty_card, "advanced_empty_card");
 		itemList.add("advanced_empty_card");
-		tritanium_nugget = new Item().setUnlocalizedName("tritanium_nugget").setCreativeTab(tab);
-		GameRegistry.registerItem(tritanium_nugget, "tritanium_nugget");
-		itemList.add("tritanium_nugget");
+		nitrium_nugget = new Item().setUnlocalizedName("nitrium_nugget").setCreativeTab(tab);
+		GameRegistry.registerItem(nitrium_nugget, "nitrium_nugget");
+		itemList.add("nitrium_nugget");
 		rawAdvancedCircuitBoard = new Item().setUnlocalizedName("rawAdvancedCircuitBoard").setCreativeTab(tab);
 		GameRegistry.registerItem(rawAdvancedCircuitBoard, "rawAdvancedCircuitBoard");
 		itemList.add("rawAdvancedCircuitBoard");
 		advancedPCB = new Item().setUnlocalizedName("advancedPCB").setCreativeTab(tab);
 		GameRegistry.registerItem(advancedPCB, "advancedPCB");
 		itemList.add("advancedPCB");
-		//dusts
-		bronze_dust = registerDust("bronzeDust");
-		OreDictionary.registerOre("dustBronze", bronze_dust);
-		copper_dust = registerDust("copperDust");
-		OreDictionary.registerOre("dustCopper", copper_dust);
-		tin_dust = registerDust("tinDust");
-		OreDictionary.registerOre("dustTin", tin_dust);
-		aluminum_dust = registerDust("aluminumDust");
-		steel_dust = registerDust("steelDust");
-		OreDictionary.registerOre("dustSteel", steel_dust);
-		
 	}
 	private static Item registerIngot(String name) {
 		Item ingot = new Item().setCreativeTab(MineTrek.creativeTab).setUnlocalizedName(name);

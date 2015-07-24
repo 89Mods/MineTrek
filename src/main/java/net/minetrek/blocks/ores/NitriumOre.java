@@ -1,26 +1,24 @@
 package net.minetrek.blocks.ores;
 
-public class TitaniumOre extends Ore {
+public class NitriumOre extends Ore {
+	public NitriumOre() {
+		super("nitrium", 2);
 
-	public TitaniumOre() {
-		super("titanium", 2);
-
-		setHardness(3.0F);
+		setHardness(1.0F);
 	}
 
 	@Override
 	public int getNumberPerChunk(int dimension) {
-		return 6;
+		return 10;
 	}
 
 	@Override
 	public int getMaxGenHeight(int dimension) {
-		return 45;
+		return 64;
 	}
 
 	@Override
 	public int blocksPerVein(int dimension) {
-		return 7;
+		return 8;
 	}
-
 }

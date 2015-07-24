@@ -7,9 +7,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minetrek.MineTrek;
-import net.minetrek.blocks.machines.CrusherContainer;
-import net.minetrek.blocks.machines.CrusherGui;
-import net.minetrek.blocks.machines.CrusherTileEntity;
 import net.minetrek.blocks.machines.LaserElectronManipulatorContainer;
 import net.minetrek.blocks.machines.LaserElectronManipulatorGui;
 import net.minetrek.blocks.machines.LaserElectronManipulatorTileEntity;
@@ -23,7 +20,6 @@ import net.minetrek.blocks.machines.ParticleAcceleratorTileEntity;
 public class GuiHandler implements IGuiHandler{
 	public static final int MAGNETIZER_GUI = 4;
 	public static final int LEM_GUI = 0;
-	public static final int CRUSHER_GUI = 3;
 	public static final int PARTICLEACCELERATOR_GUI = 2;
 	public GuiHandler() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(MineTrek.instance, this);
@@ -40,10 +36,6 @@ public class GuiHandler implements IGuiHandler{
 		case LEM_GUI:
 			if (entity != null && entity instanceof LaserElectronManipulatorTileEntity)
 				return new LaserElectronManipulatorContainer(player.inventory, (LaserElectronManipulatorTileEntity) entity);
-			break;
-		case CRUSHER_GUI:
-			if (entity != null && entity instanceof CrusherTileEntity)
-				return new CrusherContainer(player.inventory, (CrusherTileEntity) entity);
 			break;
 		case PARTICLEACCELERATOR_GUI:
 			if (entity != null && entity instanceof ParticleAcceleratorTileEntity)
@@ -64,10 +56,6 @@ public class GuiHandler implements IGuiHandler{
 		case LEM_GUI:
 			if (entity != null && entity instanceof LaserElectronManipulatorTileEntity)
 				return new LaserElectronManipulatorGui(player.inventory, (LaserElectronManipulatorTileEntity) entity);
-			break;
-		case CRUSHER_GUI:
-			if (entity != null && entity instanceof CrusherTileEntity)
-				return new CrusherGui(player.inventory, (CrusherTileEntity) entity);
 			break;
 		case PARTICLEACCELERATOR_GUI:
 			if (entity != null && entity instanceof ParticleAcceleratorTileEntity)

@@ -39,8 +39,12 @@ public class EntityPhotonTorpedo extends EntityThrowable {
 
 		if (worldObj.isRemote)
 			return;
-		
+		if (mop.entityHit != null){
+			this.worldObj.createExplosion(mop.entityHit, mop.entityHit.posX, mop.entityHit.posY, mop.entityHit.posZ, 10.7F, true);
+			mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), 1000);
+		}else{
 		this.worldObj.createExplosion(this, mop.getBlockPos().getX(), mop.getBlockPos().getY(), mop.getBlockPos().getZ(), 10.7F, true);
+		}
 	}
 	@Override
 	protected float getGravityVelocity() {

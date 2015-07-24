@@ -38,7 +38,7 @@ tile.tritaniumOre.name=Tritaniumerz
 tile.tungstenOre.name=Tungsten Ore
 tile.uraniumOre.name=Uranerz
 item.phaser.name=Phaser
-item.coil.name=Spule
+item.coil.name=item.coil.name=Redstone-Nitrium Spule
 item.bronzeDust.name=Bronzestaub
 item.magnet.name=Magnet
 tile.magnetizer.name=Magnetisierer
@@ -69,3 +69,6 @@ item.rawAdvancedCircuitBoard.name=Advanced Raw Circuit Board
 item.advancedPCB.name=Advanced Printed Circuit Board
 item.ultimate_hard_drive.name=Ultimative Festplatte
 tile.torpedo_tube.name=Torpedo Tube
+item.isolinear_chip.name=Isolinearer Chip
+item.nitriumIngot.name=Nitriumbarren
+item.nitrium_nugget.name=Nitrium Nugget
