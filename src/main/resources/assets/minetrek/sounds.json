@@ -9,7 +9,12 @@
       "minetrek:photonTorpedo"
     ]
   },
-    "alarm": {
+  "explosion":{
+    "sounds": [
+	  "minetrek:smallexplosion2"
+	]
+  },
+  "alarm": {
     "sounds": [
       "minetrek:alarm"
     ]

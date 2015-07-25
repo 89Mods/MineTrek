@@ -30,7 +30,6 @@ public class MineTrekItems {
 	public static Item advanced_empty_card;
 	public static Item rawAdvancedCircuitBoard;
 	public static Item advancedPCB;
-	public static Item isolinear_chip;
 	public static Item nitrium_ingot;
 	public static Item nitrium_nugget;
 	public static void initialize(CreativeTabs tab) {
@@ -52,9 +51,6 @@ public class MineTrekItems {
 		lol_card = new ItemCardLol().setCreativeTab(tab);
 		GameRegistry.registerItem(lol_card, "lol_card");
 		itemList.add("lol_card");
-		isolinear_chip =  new ItemIsolinearChip().setCreativeTab(tab);
-		GameRegistry.registerItem(isolinear_chip, "isolinear_chip");
-		itemList.add("isolinear_chip");
 		//other
 		dilithium_crystal = new DilithiumCrystal().setCreativeTab(tab);
 		GameRegistry.registerItem(dilithium_crystal, "dilithiumCrystal");
@@ -92,6 +88,8 @@ public class MineTrekItems {
 		advancedPCB = new Item().setUnlocalizedName("advancedPCB").setCreativeTab(tab);
 		GameRegistry.registerItem(advancedPCB, "advancedPCB");
 		itemList.add("advancedPCB");
+		//Isolinear Chips
+		IsolinearChips.initialize(tab);
 	}
 	private static Item registerIngot(String name) {
 		Item ingot = new Item().setCreativeTab(MineTrek.creativeTab).setUnlocalizedName(name);
