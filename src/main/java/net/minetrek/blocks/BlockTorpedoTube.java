@@ -8,12 +8,16 @@ import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.internal.FMLNetworkHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minetrek.MineTrek;
+import net.minetrek.client.gui.GuiHandler;
 
 public class BlockTorpedoTube extends BlockContainer {
 	
@@ -35,6 +39,15 @@ public class BlockTorpedoTube extends BlockContainer {
 	public TileEntity createNewTileEntity(World var1, int var2) {
 		return new TileEntityTorpedoTube();
 	}
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ)
+    {
+		if (!worldIn.isRemote) {
+			FMLNetworkHandler.openGui(playerIn, MineTrek.instance, GuiHandler.TORPEDO_TUBE_GUI, worldIn, pos.getX(), pos.getY(), pos.getZ());
+		}
+
+		return true;
+    }
     private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state)
     {
         if (!worldIn.isRemote)

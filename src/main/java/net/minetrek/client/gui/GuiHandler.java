@@ -7,6 +7,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minetrek.MineTrek;
+import net.minetrek.blocks.ContainerTorpedoTube;
+import net.minetrek.blocks.GuiTorpedoTube;
+import net.minetrek.blocks.TileEntityTorpedoTube;
 import net.minetrek.blocks.machines.LaserElectronManipulatorContainer;
 import net.minetrek.blocks.machines.LaserElectronManipulatorGui;
 import net.minetrek.blocks.machines.LaserElectronManipulatorTileEntity;
@@ -20,6 +23,7 @@ import net.minetrek.blocks.machines.ParticleAcceleratorTileEntity;
 public class GuiHandler implements IGuiHandler{
 	public static final int MAGNETIZER_GUI = 4;
 	public static final int LEM_GUI = 0;
+	public static final int TORPEDO_TUBE_GUI = 1;
 	public static final int PARTICLEACCELERATOR_GUI = 2;
 	public GuiHandler() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(MineTrek.instance, this);
@@ -41,6 +45,10 @@ public class GuiHandler implements IGuiHandler{
 			if (entity != null && entity instanceof ParticleAcceleratorTileEntity)
 				return new ParticleAcceleratorContainer(player.inventory, (ParticleAcceleratorTileEntity) entity);
 			break;
+		case TORPEDO_TUBE_GUI:
+			if(entity != null && entity instanceof TileEntityTorpedoTube)
+				return new ContainerTorpedoTube(player.inventory, (TileEntityTorpedoTube) entity);
+			break;
 		}
 		return null;
 	}
@@ -60,6 +68,10 @@ public class GuiHandler implements IGuiHandler{
 		case PARTICLEACCELERATOR_GUI:
 			if (entity != null && entity instanceof ParticleAcceleratorTileEntity)
 				return new ParticleAcceleratorGui(player.inventory, (ParticleAcceleratorTileEntity) entity);
+			break;
+		case TORPEDO_TUBE_GUI:
+			if(entity != null && entity instanceof TileEntityTorpedoTube)
+				return new GuiTorpedoTube(player.inventory, (TileEntityTorpedoTube) entity);
 			break;
 		}
 		return null;

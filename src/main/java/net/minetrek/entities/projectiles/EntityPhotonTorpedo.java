@@ -34,6 +34,9 @@ public class EntityPhotonTorpedo extends EntityThrowable {
 	}
 	@Override
 	protected void onImpact(MovingObjectPosition mop) {
+		if(mop.entityHit instanceof EntityPhotonTorpedo){
+			return;
+		}
 		if(!worldObj.isRemote){
 			this.worldObj.playSoundAtEntity(this, "minetrek:explosion", 10.0F, 1.0F);
 		}

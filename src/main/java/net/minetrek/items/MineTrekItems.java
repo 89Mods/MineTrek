@@ -32,6 +32,7 @@ public class MineTrekItems {
 	public static Item advancedPCB;
 	public static Item nitrium_ingot;
 	public static Item nitrium_nugget;
+	public static Item photon_torpedo;
 	public static void initialize(CreativeTabs tab) {
 		//ingots
 		aluminum_ingot = registerIngot("aluminumIngot");
@@ -88,6 +89,9 @@ public class MineTrekItems {
 		advancedPCB = new Item().setUnlocalizedName("advancedPCB").setCreativeTab(tab);
 		GameRegistry.registerItem(advancedPCB, "advancedPCB");
 		itemList.add("advancedPCB");
+		photon_torpedo = new Item().setCreativeTab(tab).setUnlocalizedName("photon_torpedo");
+		GameRegistry.registerItem(photon_torpedo, "photon_torpedo");
+		itemList.add("photon_torpedo");
 		//Isolinear Chips
 		IsolinearChips.initialize(tab);
 	}
