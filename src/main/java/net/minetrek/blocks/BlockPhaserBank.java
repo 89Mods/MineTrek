@@ -19,17 +19,16 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minetrek.MineTrek;
 import net.minetrek.client.gui.GuiHandler;
 
-public class BlockTorpedoLauncher extends BlockContainer {
+public class BlockPhaserBank extends BlockContainer {
 	
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	
-	public BlockTorpedoLauncher(){
+	public BlockPhaserBank(){
 		super(Material.iron);
 		setHarvestLevel("pickaxe",1);
 		setStepSound(this.soundTypeMetal);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-		GameRegistry.registerTileEntity(TileEntityTorpedoLauncher.class, "torpedoTubeTileEntity");
-		
+		GameRegistry.registerTileEntity(TileEntityPhaserBank.class, "phaserBankTileEntity");
 	}
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
     {
@@ -37,17 +36,8 @@ public class BlockTorpedoLauncher extends BlockContainer {
     }
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2) {
-		return new TileEntityTorpedoLauncher();
+		return new TileEntityPhaserBank();
 	}
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ)
-    {
-		if (!worldIn.isRemote) {
-			FMLNetworkHandler.openGui(playerIn, MineTrek.instance, GuiHandler.TORPEDO_LAUNCHER_GUI, worldIn, pos.getX(), pos.getY(), pos.getZ());
-		}
-
-		return true;
-    }
     private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state)
     {
         if (!worldIn.isRemote)
@@ -86,7 +76,15 @@ public class BlockTorpedoLauncher extends BlockContainer {
     {
     	worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
     }
-    
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ)
+    {
+		if (!worldIn.isRemote) {
+			FMLNetworkHandler.openGui(playerIn, MineTrek.instance, GuiHandler.PHASER_BANK_GUI, worldIn, pos.getX(), pos.getY(), pos.getZ());
+		}
+
+		return true;
+    }
     public IBlockState getStateFromMeta(int meta)
     {
         EnumFacing enumfacing = EnumFacing.getFront(meta);

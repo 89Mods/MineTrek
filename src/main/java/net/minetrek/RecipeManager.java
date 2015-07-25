@@ -44,6 +44,8 @@ public class RecipeManager {
 				 GameRegistry.addRecipe(new ItemStack(MineTrekItems.rawAdvancedCircuitBoard,1),new Object[] {"#X", "Y ", '#', MineTrekItems.nitrium_nugget, 'X', Items.clay_ball, Character.valueOf('Y'), new ItemStack(Items.dye,1,2)});
 				 GameRegistry.addRecipe(new ItemStack(MineTrekItems.advanced_empty_card,1),new Object[] {"#  ", "#X ", "#Y ", '#', MineTrekItems.nitrium_nugget, 'X', MineTrekItems.advancedPCB, 'Y', Items.gold_nugget});
 				 GameRegistry.addRecipe(new ItemStack(MineTrekItems.lol_card,1),new Object[] {"XYX", " Z ", 'X', Items.redstone, 'Y', Blocks.dirt, 'Z', MineTrekItems.advanced_empty_card});
+				 GameRegistry.addRecipe(new ItemStack(MineTrekBlocks.torpedo_launcher,1), new Object[] {"#X#", "#Y#", "#C#", '#', MineTrekItems.tritanium_ingot, 'X', Blocks.piston, 'Y', MineTrekItems.coil, 'C', MineTrekItems.advancedPCB});
+				 GameRegistry.addRecipe(new ItemStack(MineTrekBlocks.torpedo_launcher,1), new Object[] {"#X#", "#Y#", "#C#", '#', MineTrekItems.tritanium_ingot, 'X', MineTrekItems.phaser, 'Y', MineTrekItems.coil, 'C', MineTrekItems.advancedPCB});
 	   //machines
 				 MagnetizerTileEntity.addRecipe(new ItemStack(Items.iron_ingot,1), new ItemStack(MineTrekItems.magnet,1));
 				 LaserElectronManipulatorTileEntity.addRecipe(new ItemStack(MineTrekItems.antimaterstorage_water,1), new ItemStack(MineTrekItems.antimaterstorage_deuterium));

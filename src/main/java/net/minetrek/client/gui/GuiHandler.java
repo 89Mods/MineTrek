@@ -7,8 +7,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minetrek.MineTrek;
+import net.minetrek.blocks.ContainerPhaserBank;
 import net.minetrek.blocks.ContainerTorpedoLauncher;
+import net.minetrek.blocks.GuiPhaserBank;
 import net.minetrek.blocks.GuiTorpedoLauncher;
+import net.minetrek.blocks.TileEntityPhaserBank;
 import net.minetrek.blocks.TileEntityTorpedoLauncher;
 import net.minetrek.blocks.machines.LaserElectronManipulatorContainer;
 import net.minetrek.blocks.machines.LaserElectronManipulatorGui;
@@ -21,10 +24,11 @@ import net.minetrek.blocks.machines.ParticleAcceleratorGui;
 import net.minetrek.blocks.machines.ParticleAcceleratorTileEntity;
 
 public class GuiHandler implements IGuiHandler{
-	public static final int MAGNETIZER_GUI = 4;
 	public static final int LEM_GUI = 0;
-	public static final int TORPEDO_TUBE_GUI = 1;
+	public static final int TORPEDO_LAUNCHER_GUI = 1;
 	public static final int PARTICLEACCELERATOR_GUI = 2;
+	public static final int PHASER_BANK_GUI = 3;
+	public static final int MAGNETIZER_GUI = 4;
 	public GuiHandler() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(MineTrek.instance, this);
 	}
@@ -45,9 +49,13 @@ public class GuiHandler implements IGuiHandler{
 			if (entity != null && entity instanceof ParticleAcceleratorTileEntity)
 				return new ParticleAcceleratorContainer(player.inventory, (ParticleAcceleratorTileEntity) entity);
 			break;
-		case TORPEDO_TUBE_GUI:
+		case TORPEDO_LAUNCHER_GUI:
 			if(entity != null && entity instanceof TileEntityTorpedoLauncher)
 				return new ContainerTorpedoLauncher(player.inventory, (TileEntityTorpedoLauncher) entity);
+			break;
+		case PHASER_BANK_GUI:
+			if(entity != null && entity instanceof TileEntityPhaserBank)
+				return new ContainerPhaserBank(player.inventory, (TileEntityPhaserBank) entity);
 			break;
 		}
 		return null;
@@ -69,9 +77,13 @@ public class GuiHandler implements IGuiHandler{
 			if (entity != null && entity instanceof ParticleAcceleratorTileEntity)
 				return new ParticleAcceleratorGui(player.inventory, (ParticleAcceleratorTileEntity) entity);
 			break;
-		case TORPEDO_TUBE_GUI:
+		case TORPEDO_LAUNCHER_GUI:
 			if(entity != null && entity instanceof TileEntityTorpedoLauncher)
 				return new GuiTorpedoLauncher(player.inventory, (TileEntityTorpedoLauncher) entity);
+			break;
+		case PHASER_BANK_GUI:
+			if(entity != null && entity instanceof TileEntityPhaserBank)
+				return new GuiPhaserBank(player.inventory, (TileEntityPhaserBank) entity);
 			break;
 		}
 		return null;

@@ -6,14 +6,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minetrek.blocks.machines.MagnetizerContainer;
-import net.minetrek.blocks.machines.MagnetizerTileEntity;
 
-public class GuiTorpedoLauncher extends GuiContainer {
-	public static final ResourceLocation texture = new ResourceLocation("minetrek", "textures/gui/torpedo_launcher.png");
-	private final TileEntityTorpedoLauncher entity;
-	public GuiTorpedoLauncher(InventoryPlayer invPlayer, TileEntityTorpedoLauncher entity) {
-		super(new ContainerTorpedoLauncher(invPlayer, entity));
+public class GuiPhaserBank extends GuiContainer {
+	public static final ResourceLocation texture = new ResourceLocation("minetrek", "textures/gui/phaser_bank.png");
+	private final TileEntityPhaserBank entity;
+	public GuiPhaserBank(InventoryPlayer invPlayer, TileEntityPhaserBank entity) {
+		super(new ContainerPhaserBank(invPlayer, entity));
 		xSize = 176;
 		ySize = 165;
 		this.entity = entity;

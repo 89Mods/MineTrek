@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "minetrek:blocks/phaser_bank_side",
+        "front": "minetrek:blocks/phaser_bank_front",
+        "side": "minetrek:blocks/phaser_bank_side"
+    }
+}

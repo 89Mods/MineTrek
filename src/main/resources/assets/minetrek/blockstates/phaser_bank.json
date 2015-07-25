@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "minetrek:phaser_bank" },
+        "facing=south": { "model": "minetrek:phaser_bank", "y": 180 },
+        "facing=west":  { "model": "minetrek:phaser_bank", "y": 270 },
+        "facing=east":  { "model": "minetrek:phaser_bank", "y": 90 }
+    }
+}

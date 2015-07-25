@@ -50,6 +50,9 @@ public class MineTrekBlocks {
 		deflector = new BlockDeflector().setHardness(5.0F).setResistance(10.0F).setCreativeTab(ct).setUnlocalizedName("deflector");
 		GameRegistry.registerBlock(deflector, "deflector");
 		blockList.add("deflector");
+		phaser_bank = new BlockPhaserBank().setHardness(5.0F).setResistance(10.0F).setCreativeTab(ct).setUnlocalizedName("phaser_bank");
+		GameRegistry.registerBlock(phaser_bank, "phaser_bank");
+		blockList.add("phaser_bank");
 		
 	}
 }
