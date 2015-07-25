@@ -46,6 +46,7 @@ public class RecipeManager {
 				 GameRegistry.addRecipe(new ItemStack(MineTrekItems.lol_card,1),new Object[] {"XYX", " Z ", 'X', Items.redstone, 'Y', Blocks.dirt, 'Z', MineTrekItems.advanced_empty_card});
 				 GameRegistry.addRecipe(new ItemStack(MineTrekBlocks.torpedo_launcher,1), new Object[] {"#X#", "#Y#", "#C#", '#', MineTrekItems.tritanium_ingot, 'X', Blocks.piston, 'Y', MineTrekItems.coil, 'C', MineTrekItems.advancedPCB});
 				 GameRegistry.addRecipe(new ItemStack(MineTrekBlocks.torpedo_launcher,1), new Object[] {"#X#", "#Y#", "#C#", '#', MineTrekItems.tritanium_ingot, 'X', MineTrekItems.phaser, 'Y', MineTrekItems.coil, 'C', MineTrekItems.advancedPCB});
+				 GameRegistry.addRecipe(new ItemStack(MineTrekBlocks.phaser_bank,10),new Object[] {"#X#", "#Y#", "#C#", '#', MineTrekItems.tritanium_ingot, 'X', MineTrekItems.antimaterstorage_full, 'Y', Blocks.tnt, 'C', MineTrekItems.coil});
 	   //machines
 				 MagnetizerTileEntity.addRecipe(new ItemStack(Items.iron_ingot,1), new ItemStack(MineTrekItems.magnet,1));
 				 LaserElectronManipulatorTileEntity.addRecipe(new ItemStack(MineTrekItems.antimaterstorage_water,1), new ItemStack(MineTrekItems.antimaterstorage_deuterium));
