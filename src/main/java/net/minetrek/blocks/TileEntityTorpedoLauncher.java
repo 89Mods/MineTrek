@@ -29,9 +29,9 @@ import net.minetrek.entities.projectiles.EntityPhaserBolt;
 import net.minetrek.entities.projectiles.EntityPhotonTorpedo;
 import net.minetrek.items.MineTrekItems;
 
-public class TileEntityTorpedoTube extends TileEntity implements SimpleComponent, ISidedInventory, IUpdatePlayerListBox {
+public class TileEntityTorpedoLauncher extends TileEntity implements SimpleComponent, ISidedInventory, IUpdatePlayerListBox {
 	private ItemStack[] inventory;
-	public TileEntityTorpedoTube(){
+	public TileEntityTorpedoLauncher(){
 		super();
 		inventory = new ItemStack[1];
 		
@@ -84,7 +84,7 @@ public class TileEntityTorpedoTube extends TileEntity implements SimpleComponent
 	}
 	@Override
 	public String getComponentName() {
-		return "minetrek_torpedo_tube";
+		return "minetrek_torpedo_launcher";
 	}
 	public void writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
@@ -191,7 +191,7 @@ public class TileEntityTorpedoTube extends TileEntity implements SimpleComponent
 	}
 	@Callback
 	public Object[] fire(Context context, Arguments args) {
-		BlockTorpedoTube block = (BlockTorpedoTube)this.worldObj.getBlockState(this.pos).getBlock();
+		BlockTorpedoLauncher block = (BlockTorpedoLauncher)this.worldObj.getBlockState(this.pos).getBlock();
 		IBlockState state = this.worldObj.getBlockState(this.pos);
 		if(this.inventory[0] == null){
 			return new Object[] {false, "No Ammo" };

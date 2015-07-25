@@ -73,3 +73,5 @@ item.isolinear_chip.name=Isolinear Chip
 item.nitriumIngot.name=Nitrium Ingot
 item.nitrium_nugget.name=Nitrium Nugget
 item.photon_torpedo.name=Photon Torpedo
+tile.deflector.name=Deflector
+tile.torpedo_launcher.name=Torpedo Launcher

@@ -9,11 +9,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minetrek.blocks.machines.MagnetizerContainer;
 import net.minetrek.blocks.machines.MagnetizerTileEntity;
 
-public class GuiTorpedoTube extends GuiContainer {
+public class GuiTorpedoLauncher extends GuiContainer {
 	public static final ResourceLocation texture = new ResourceLocation("minetrek", "textures/gui/torpedo_tube.png");
-	private final TileEntityTorpedoTube entity;
-	public GuiTorpedoTube(InventoryPlayer invPlayer, TileEntityTorpedoTube entity) {
-		super(new ContainerTorpedoTube(invPlayer, entity));
+	private final TileEntityTorpedoLauncher entity;
+	public GuiTorpedoLauncher(InventoryPlayer invPlayer, TileEntityTorpedoLauncher entity) {
+		super(new ContainerTorpedoLauncher(invPlayer, entity));
 		xSize = 176;
 		ySize = 165;
 		this.entity = entity;

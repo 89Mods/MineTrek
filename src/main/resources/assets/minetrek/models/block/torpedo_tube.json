@@ -1,8 +1,0 @@
-{
-    "parent": "block/orientable",
-    "textures": {
-        "top": "minetrek:blocks/torpedo_tube",
-        "front": "minetrek:blocks/torpedo_tube_front",
-        "side": "minetrek:blocks/torpedo_tube"
-    }
-}

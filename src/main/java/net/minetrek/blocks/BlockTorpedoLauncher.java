@@ -19,16 +19,16 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minetrek.MineTrek;
 import net.minetrek.client.gui.GuiHandler;
 
-public class BlockTorpedoTube extends BlockContainer {
+public class BlockTorpedoLauncher extends BlockContainer {
 	
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	
-	public BlockTorpedoTube(){
+	public BlockTorpedoLauncher(){
 		super(Material.iron);
 		setHarvestLevel("pickaxe",1);
 		setStepSound(this.soundTypeMetal);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-		GameRegistry.registerTileEntity(TileEntityTorpedoTube.class, "torpedoTubeTileEntity");
+		GameRegistry.registerTileEntity(TileEntityTorpedoLauncher.class, "torpedoTubeTileEntity");
 		
 	}
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
@@ -37,7 +37,7 @@ public class BlockTorpedoTube extends BlockContainer {
     }
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2) {
-		return new TileEntityTorpedoTube();
+		return new TileEntityTorpedoLauncher();
 	}
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ)

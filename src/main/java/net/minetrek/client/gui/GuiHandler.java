@@ -7,9 +7,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minetrek.MineTrek;
-import net.minetrek.blocks.ContainerTorpedoTube;
-import net.minetrek.blocks.GuiTorpedoTube;
-import net.minetrek.blocks.TileEntityTorpedoTube;
+import net.minetrek.blocks.ContainerTorpedoLauncher;
+import net.minetrek.blocks.GuiTorpedoLauncher;
+import net.minetrek.blocks.TileEntityTorpedoLauncher;
 import net.minetrek.blocks.machines.LaserElectronManipulatorContainer;
 import net.minetrek.blocks.machines.LaserElectronManipulatorGui;
 import net.minetrek.blocks.machines.LaserElectronManipulatorTileEntity;
@@ -46,8 +46,8 @@ public class GuiHandler implements IGuiHandler{
 				return new ParticleAcceleratorContainer(player.inventory, (ParticleAcceleratorTileEntity) entity);
 			break;
 		case TORPEDO_TUBE_GUI:
-			if(entity != null && entity instanceof TileEntityTorpedoTube)
-				return new ContainerTorpedoTube(player.inventory, (TileEntityTorpedoTube) entity);
+			if(entity != null && entity instanceof TileEntityTorpedoLauncher)
+				return new ContainerTorpedoLauncher(player.inventory, (TileEntityTorpedoLauncher) entity);
 			break;
 		}
 		return null;
@@ -70,8 +70,8 @@ public class GuiHandler implements IGuiHandler{
 				return new ParticleAcceleratorGui(player.inventory, (ParticleAcceleratorTileEntity) entity);
 			break;
 		case TORPEDO_TUBE_GUI:
-			if(entity != null && entity instanceof TileEntityTorpedoTube)
-				return new GuiTorpedoTube(player.inventory, (TileEntityTorpedoTube) entity);
+			if(entity != null && entity instanceof TileEntityTorpedoLauncher)
+				return new GuiTorpedoLauncher(player.inventory, (TileEntityTorpedoLauncher) entity);
 			break;
 		}
 		return null;

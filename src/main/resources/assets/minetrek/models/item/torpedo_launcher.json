@@ -1,5 +1,5 @@
 {
-    "parent": "minetrek:block/torpedo_tube",
+    "parent": "minetrek:block/torpedo_launcher",
     "display": {
         "thirdperson": {
             "rotation": [ 10, -45, 170 ],

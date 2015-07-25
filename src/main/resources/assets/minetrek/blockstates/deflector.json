@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "minetrek:deflector" },
+        "facing=south": { "model": "minetrek:deflector", "y": 180 },
+        "facing=west":  { "model": "minetrek:deflector", "y": 270 },
+        "facing=east":  { "model": "minetrek:deflector", "y": 90 }
+    }
+}

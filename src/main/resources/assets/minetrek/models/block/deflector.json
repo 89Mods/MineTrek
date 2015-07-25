@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "minetrek:blocks/deflector_side",
+        "front": "minetrek:blocks/deflector_front",
+        "side": "minetrek:blocks/deflector_side"
+    }
+}

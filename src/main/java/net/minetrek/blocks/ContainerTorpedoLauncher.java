@@ -7,9 +7,9 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minetrek.blocks.machines.MagnetizerTileEntity;
 
-public class ContainerTorpedoTube extends Container {
-	private final TileEntityTorpedoTube entity;
-	public ContainerTorpedoTube(InventoryPlayer invPlayer, TileEntityTorpedoTube entity) {
+public class ContainerTorpedoLauncher extends Container {
+	private final TileEntityTorpedoLauncher entity;
+	public ContainerTorpedoLauncher(InventoryPlayer invPlayer, TileEntityTorpedoLauncher entity) {
 		this.entity = entity;
 		// Hotbar
 		for (int x = 0; x < 9; x++) {

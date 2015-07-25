@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "minetrek:blocks/torpedo_launcher",
+        "front": "minetrek:blocks/torpedo_launcher_front",
+        "side": "minetrek:blocks/torpedo_launcher"
+    }
+}

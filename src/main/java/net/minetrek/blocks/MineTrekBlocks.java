@@ -19,7 +19,9 @@ public class MineTrekBlocks {
 	public static Block particleAccelerator;
 	public static Block antimaterbomb;
 	public static Block warpcore;
-	public static Block torpedo_tube;
+	public static Block torpedo_launcher;
+	public static Block deflector;
+	public static Block phaser_bank;
 	public static void initialize(CreativeTabs ct) {
 		transparent_aluminum = new TransparentAluminum().setCreativeTab(ct);
 		GameRegistry.registerBlock(transparent_aluminum, "transparent_aluminum");
@@ -42,8 +44,12 @@ public class MineTrekBlocks {
 		warpcore = new BlockWarpcore().setUnlocalizedName("warpcore").setCreativeTab(ct).setStepSound(Block.soundTypeMetal).setHardness(3.0f).setResistance(10.0f);
 		GameRegistry.registerBlock(warpcore, "warpcore");
 		blockList.add("warpcore");
-		torpedo_tube = new BlockTorpedoTube().setHardness(5.0F).setResistance(10.0F).setCreativeTab(ct).setUnlocalizedName("torpedo_tube");
-		GameRegistry.registerBlock(torpedo_tube, "torpedo_tube");
-		blockList.add("torpedo_tube");
+		torpedo_launcher = new BlockTorpedoLauncher().setHardness(5.0F).setResistance(10.0F).setCreativeTab(ct).setUnlocalizedName("torpedo_launcher");
+		GameRegistry.registerBlock(torpedo_launcher, "torpedo_launcher");
+		blockList.add("torpedo_launcher");
+		deflector = new BlockDeflector().setHardness(5.0F).setResistance(10.0F).setCreativeTab(ct).setUnlocalizedName("deflector");
+		GameRegistry.registerBlock(deflector, "deflector");
+		blockList.add("deflector");
+		
 	}
 }
