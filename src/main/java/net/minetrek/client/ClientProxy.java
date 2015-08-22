@@ -6,10 +6,13 @@ import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minetrek.MineTrek;
 import net.minetrek.blocks.MineTrekBlocks;
+import net.minetrek.blocks.RenderWire;
+import net.minetrek.blocks.TileEntityWire;
 import net.minetrek.client.render.ModelTorpedo;
 import net.minetrek.client.render.PhaserBoltRenderer;
 import net.minetrek.client.render.RenderAntimaterTNT;
@@ -36,6 +39,7 @@ public class ClientProxy {
         }
 		RenderingRegistry.registerEntityRenderingHandler(EntityPhaserBolt.class, new PhaserBoltRenderer(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityPhotonTorpedo.class, new RenderPhotonTorpedo(Minecraft.getMinecraft().getRenderManager()));
+		ClientRegistry.registerTileEntity(TileEntityWire.class, "wireTileEntity", new RenderWire());
 	}
 	public static void registerItem(Item item, int metadata, String itemName)
     {

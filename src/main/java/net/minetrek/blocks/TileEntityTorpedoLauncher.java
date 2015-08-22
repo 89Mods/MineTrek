@@ -2,6 +2,7 @@ package net.minetrek.blocks;
 
 import java.util.Random;
 
+import cofh.api.energy.IEnergyReceiver;
 import li.cil.oc.api.machine.Arguments;
 import li.cil.oc.api.machine.Callback;
 import li.cil.oc.api.machine.Context;
@@ -29,8 +30,10 @@ import net.minetrek.entities.projectiles.EntityPhaserBolt;
 import net.minetrek.entities.projectiles.EntityPhotonTorpedo;
 import net.minetrek.items.MineTrekItems;
 
-public class TileEntityTorpedoLauncher extends TileEntity implements SimpleComponent, ISidedInventory, IUpdatePlayerListBox {
+public class TileEntityTorpedoLauncher extends TileEntity implements SimpleComponent, ISidedInventory, IUpdatePlayerListBox,IEnergyReceiver {
 	private ItemStack[] inventory;
+	private int power = 0;
+	private int bufferSize = 2000;
 	public TileEntityTorpedoLauncher(){
 		super();
 		inventory = new ItemStack[1];
@@ -39,6 +42,16 @@ public class TileEntityTorpedoLauncher extends TileEntity implements SimpleCompo
 	@Override
 	public int getSizeInventory() {
 		return inventory.length;
+	}
+	@Override
+	public Packet getDescriptionPacket() {
+		NBTTagCompound nbtTag = new NBTTagCompound();
+		this.writeToNBT(nbtTag);
+		return new S35PacketUpdateTileEntity(this.getPos(), 1, nbtTag);
+	}
+	@Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet) {
+		readFromNBT(packet.getNbtCompound());
 	}
 	@Override
 	public ItemStack getStackInSlot(int i) {
@@ -102,6 +115,7 @@ public class TileEntityTorpedoLauncher extends TileEntity implements SimpleCompo
 	        }
 
 	        compound.setTag("Items", nbttaglist);
+	        compound.setInteger("power",power);
 	}
 
 	@Override
@@ -120,6 +134,7 @@ public class TileEntityTorpedoLauncher extends TileEntity implements SimpleCompo
                 this.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
             }
         }
+        power = compound.getInteger("power");
 	}
 	public void updateEntity(){
 		this.update();
@@ -129,6 +144,12 @@ public class TileEntityTorpedoLauncher extends TileEntity implements SimpleCompo
 		
 		if (this.worldObj.isRemote)
 			return;
+		if(this.power > bufferSize){
+			this.power = bufferSize;
+		}
+		if(this.power < 0){
+			this.power = 0;
+		}
 		
 		worldObj.markBlockForUpdate(this.getPos());
 
@@ -199,6 +220,9 @@ public class TileEntityTorpedoLauncher extends TileEntity implements SimpleCompo
 		if(this.inventory[0].stackSize < 1){
 			return new Object[] {false, "No Ammo" };
 		}
+		if(this.power < 200){
+			return new Object[] {false, "Not Enough Energy" };
+		}
 		if(this.inventory[0].getItem() != MineTrekItems.photon_torpedo){
 			return new Object[] {false, "Invalid Ammo" };
 		}
@@ -221,8 +245,12 @@ public class TileEntityTorpedoLauncher extends TileEntity implements SimpleCompo
 			if(this.inventory[0].stackSize == 0){
 				this.inventory[0] = null;
 			}
+			addEnergy(-200,false);
+		}else{
+			return new Object[] {success, "An unknow error occured. This should be impossible!"};
 		}
 		this.updateEntity();
+		this.worldObj.markBlockForUpdate(this.getPos());
 		return new Object[] {success, "FIRE" };
 	}
 	public void shoot(World world, int x, int y, int z, int fromX, int fromY, int fromZ) {
@@ -231,5 +259,39 @@ public class TileEntityTorpedoLauncher extends TileEntity implements SimpleCompo
 		//world.playSound(this.pos.getX(), this.pos.getY(), this.pos.getZ(), "minetrek:photonTorpedo", 10F, 1.0F, true);
 		world.spawnEntityInWorld(e);
 		world.playSoundAtEntity(e, "minetrek:photonTorpedo", 10F, 1.0F);
+	}
+	@Override
+	public boolean canConnectEnergy(EnumFacing facing) {
+		if (worldObj.isRemote) return false;
+		return true;
+	}
+	@Override
+	public int receiveEnergy(EnumFacing facing, int maxReceive, boolean simulate) {
+		if (worldObj.isRemote) return 0;
+		worldObj.markBlockForUpdate(this.getPos());
+		return addEnergy(maxReceive, simulate);
+	}
+	protected int addEnergy(int amount, boolean simulate) {
+		
+		int energyReceived = Math.min(this.bufferSize - this.power, amount);
+
+		if (!simulate) {
+			int amountUsed = amount;
+			if ((power + energyReceived)>bufferSize) amountUsed = (bufferSize-power);
+			if ((power + energyReceived)<0) amountUsed = (power);
+			power += energyReceived;
+			if (power>=bufferSize) power = bufferSize;
+			if (power<0) power = 0;
+			
+		}
+		return energyReceived;
+	}
+	@Override
+	public int getEnergyStored(EnumFacing facing) {
+		return power;
+	}
+	@Override
+	public int getMaxEnergyStored(EnumFacing facing) {
+		return bufferSize;
 	}
 }

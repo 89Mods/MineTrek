@@ -24,5 +24,7 @@ public class GuiTorpedoLauncher extends GuiContainer {
 		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+		
+		this.fontRendererObj.drawString("Power: " + entity.getEnergyStored(null) + "/2000" + " RF", 170, 50, 4215752);
 	}
 }

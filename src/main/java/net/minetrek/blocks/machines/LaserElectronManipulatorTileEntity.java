@@ -2,6 +2,8 @@ package net.minetrek.blocks.machines;
 
 import java.util.ArrayList;
 
+import cofh.api.energy.IEnergyReceiver;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
@@ -16,11 +18,15 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
 
-public class LaserElectronManipulatorTileEntity extends TileEntity implements ISidedInventory,IUpdatePlayerListBox{
+public class LaserElectronManipulatorTileEntity extends TileEntity implements ISidedInventory,IUpdatePlayerListBox,IEnergyReceiver {
 	private final ItemStack[] inventory;
 	private final static int COOK_TIME = 300;
 	private int time_remaining;
 	private boolean isCooking;
+	private int power = 0;
+	private int bufferSize = 2000;
+	public boolean dirty = false;
+	public final int ENERGY_PER_TICK = 5;
 	private static final ArrayList<ItemStack> recipeIngredients = new ArrayList<ItemStack>(), recipeProducts = new ArrayList<ItemStack>();
 	public LaserElectronManipulatorTileEntity() {
 		super();
@@ -40,7 +46,9 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet) {
 		readFromNBT(packet.getNbtCompound());
 	}
-
+	public boolean isDirty(){
+		return dirty;
+	}
 	@Override
 	public int getSizeInventory() {
 		return inventory.length;
@@ -77,8 +85,8 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 			itemstack.stackSize = getInventoryStackLimit();
 		}
 
-		updateEntity();
-
+		this.markDirty();
+		dirty = true;
 	}
 
 	@Override
@@ -94,7 +102,6 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-		System.out.println(i + " " + itemstack);
 		return itemstack == null || (i != 1 && recipeIngredients.contains(itemstack));
 	}
 
@@ -115,6 +122,7 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 
 		compound.setBoolean("cooking", isCooking);
 		compound.setInteger("remaining", time_remaining);
+		compound.setInteger("power",power);
 	}
 
 	@Override
@@ -134,6 +142,7 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 
 		isCooking = compound.getBoolean("cooking");
 		time_remaining = compound.getInteger("remaining");
+		power = compound.getInteger("power");
 	}
 
 	public static void addRecipe(ItemStack in, ItemStack out) {
@@ -154,9 +163,14 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 			time_remaining = 0;
 			return;
 		}
-
+		if(this.power > bufferSize){
+			this.power = bufferSize;
+		}
+		if(this.power < 0){
+			this.power = 0;
+		}
 		if (time_remaining > 0) {
-			// energy.extractEnergy(ENERGY_PER_TICK, true);
+			addEnergy(ENERGY_PER_TICK * -1, false);
 			time_remaining--;
 		}
 
@@ -174,7 +188,6 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 				} else if (tmp.getMaxStackSize() >= tmp.stackSize + product.stackSize && tmp.getItem().equals(product.getItem())) {
 					isCooking = false;
 					inventory[1].stackSize += product.stackSize;
-
 				}
 
 				if (!isCooking)
@@ -194,14 +207,17 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 		}
 
 		worldObj.markBlockForUpdate(this.getPos());
+		dirty = true;
 
 	}
 
 	private boolean validIngredient() {
+		if(power >= 50){
 		if (inventory[0] != null)
 			for (ItemStack is : recipeIngredients)
 				if (inventory[0].getItem().equals(is.getItem()))
 					return true;
+		}
 		return false;
 	}
 
@@ -271,5 +287,39 @@ public class LaserElectronManipulatorTileEntity extends TileEntity implements IS
 	public boolean canExtractItem(int index, ItemStack stack,
 			EnumFacing direction) {
 		return true;
+	}
+	@Override
+	public boolean canConnectEnergy(EnumFacing facing) {
+		if (worldObj.isRemote) return false;
+		return true;
+	}
+	@Override
+	public int receiveEnergy(EnumFacing facing, int maxReceive, boolean simulate) {
+		if (worldObj.isRemote) return 0;
+		worldObj.markBlockForUpdate(this.getPos());
+		return addEnergy(maxReceive, simulate);
+	}
+	protected int addEnergy(int amount, boolean simulate) {
+		
+		int energyReceived = Math.min(this.bufferSize - this.power, amount);
+
+		if (!simulate) {
+			int amountUsed = amount;
+			if ((power + energyReceived)>bufferSize) amountUsed = (bufferSize-power);
+			if ((power + energyReceived)<0) amountUsed = (power);
+			power += energyReceived;
+			if (power>=bufferSize) power = bufferSize;
+			if (power<0) power = 0;
+			dirty = true;
+		}
+		return energyReceived;
+	}
+	@Override
+	public int getEnergyStored(EnumFacing facing) {
+		return power;
+	}
+	@Override
+	public int getMaxEnergyStored(EnumFacing facing) {
+		return bufferSize;
 	}
 }

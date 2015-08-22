@@ -6,6 +6,7 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minetrek.blocks.machines.BlockAntimatterGenerator;
 import net.minetrek.blocks.machines.LaserElectronManipulator;
 import net.minetrek.blocks.machines.Magnetizer;
 import net.minetrek.blocks.machines.ParticleAccelerator;
@@ -22,6 +23,8 @@ public class MineTrekBlocks {
 	public static Block torpedo_launcher;
 	public static Block deflector;
 	public static Block phaser_bank;
+	public static Block wire;
+	public static Block antimatterGenerator;
 	public static void initialize(CreativeTabs ct) {
 		transparent_aluminum = new TransparentAluminum().setCreativeTab(ct);
 		GameRegistry.registerBlock(transparent_aluminum, "transparent_aluminum");
@@ -53,6 +56,13 @@ public class MineTrekBlocks {
 		phaser_bank = new BlockPhaserBank().setHardness(5.0F).setResistance(10.0F).setCreativeTab(ct).setUnlocalizedName("phaser_bank");
 		GameRegistry.registerBlock(phaser_bank, "phaser_bank");
 		blockList.add("phaser_bank");
+        wire = new BlockWire().setHardness(0.0F).setResistance(5.0F).setCreativeTab(ct).setUnlocalizedName("wire").setStepSound(Block.soundTypeCloth);
+        GameRegistry.registerBlock(wire, "wire");
+        blockList.add("wire");
+        GameRegistry.registerTileEntity(TileEntityWire.class, "tileEntityWire");
+		antimatterGenerator = new BlockAntimatterGenerator().setUnlocalizedName("antimatterGenerator").setCreativeTab(ct).setStepSound(Block.soundTypeMetal).setHardness(1.0f).setResistance(5.0f);
+		GameRegistry.registerBlock(antimatterGenerator, "antimatterGenerator");
+		blockList.add("antimatterGenerator");
 		
 	}
 }

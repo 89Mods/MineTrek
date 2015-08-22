@@ -13,6 +13,8 @@ import net.minetrek.blocks.GuiPhaserBank;
 import net.minetrek.blocks.GuiTorpedoLauncher;
 import net.minetrek.blocks.TileEntityPhaserBank;
 import net.minetrek.blocks.TileEntityTorpedoLauncher;
+import net.minetrek.blocks.machines.ContainerAntimatterGenerator;
+import net.minetrek.blocks.machines.GuiAntimatterGenerator;
 import net.minetrek.blocks.machines.LaserElectronManipulatorContainer;
 import net.minetrek.blocks.machines.LaserElectronManipulatorGui;
 import net.minetrek.blocks.machines.LaserElectronManipulatorTileEntity;
@@ -22,6 +24,7 @@ import net.minetrek.blocks.machines.MagnetizerTileEntity;
 import net.minetrek.blocks.machines.ParticleAcceleratorContainer;
 import net.minetrek.blocks.machines.ParticleAcceleratorGui;
 import net.minetrek.blocks.machines.ParticleAcceleratorTileEntity;
+import net.minetrek.blocks.machines.TileEntityAntimatterGenerator;
 
 public class GuiHandler implements IGuiHandler{
 	public static final int LEM_GUI = 0;
@@ -29,6 +32,7 @@ public class GuiHandler implements IGuiHandler{
 	public static final int PARTICLEACCELERATOR_GUI = 2;
 	public static final int PHASER_BANK_GUI = 3;
 	public static final int MAGNETIZER_GUI = 4;
+	public static final int ANTIMATTERGENERATOR_GUI = 5;
 	public GuiHandler() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(MineTrek.instance, this);
 	}
@@ -57,6 +61,10 @@ public class GuiHandler implements IGuiHandler{
 			if(entity != null && entity instanceof TileEntityPhaserBank)
 				return new ContainerPhaserBank(player.inventory, (TileEntityPhaserBank) entity);
 			break;
+		case ANTIMATTERGENERATOR_GUI:
+			if(entity != null && entity instanceof TileEntityAntimatterGenerator)
+				return new ContainerAntimatterGenerator(player.inventory, (TileEntityAntimatterGenerator) entity);
+			break;
 		}
 		return null;
 	}
@@ -84,6 +92,10 @@ public class GuiHandler implements IGuiHandler{
 		case PHASER_BANK_GUI:
 			if(entity != null && entity instanceof TileEntityPhaserBank)
 				return new GuiPhaserBank(player.inventory, (TileEntityPhaserBank) entity);
+			break;
+		case ANTIMATTERGENERATOR_GUI:
+			if(entity != null && entity instanceof TileEntityAntimatterGenerator)
+				return new GuiAntimatterGenerator(player.inventory, (TileEntityAntimatterGenerator) entity);
 			break;
 		}
 		return null;

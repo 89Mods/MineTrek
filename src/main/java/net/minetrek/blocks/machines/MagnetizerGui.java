@@ -26,8 +26,6 @@ public class MagnetizerGui extends GuiContainer {
 		if (entity.isCooking()) {
 			int bars = entity.getBurnTimeRemainingScaled(6);
 
-			System.out.println(bars);
-
 			int start = 95;
 
 			for (int i = 0; i < bars; i++) {
@@ -35,7 +33,9 @@ public class MagnetizerGui extends GuiContainer {
 				this.drawRect(guiLeft + start, guiTop + 55, guiLeft + start + 4, guiTop + 62, Integer.MAX_VALUE);
 				start += 5;
 			}
+			
 		}
+		this.fontRendererObj.drawString("Power: " + entity.getEnergyStored(null) + "/2000" + " RF", 170, 50, 4215752);
 	}
 	
 }
