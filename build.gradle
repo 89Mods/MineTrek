@@ -17,17 +17,11 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "0.0.2a"
-group= "net.minetrek" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+version = "0.0.3a"
+group = "net.minetrek" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "minetrek"
-repositories{
-		maven {
-        name = "oc"
-        url = "http://maven.cil.li/"
-        }
-}
 minecraft {
-    version = "1.8-11.14.3.1493"
+    version = "1.8-11.14.3.1502"
     runDir = "eclipse"
     
     // the mappings can be changed at any time, and must be in the following format.
@@ -51,7 +45,6 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-	compile group: 'li.cil.oc',name: 'OpenComputers', version: 'MC1.8-1.5.14.32',classifier: 'api'
 }
 
 processResources
