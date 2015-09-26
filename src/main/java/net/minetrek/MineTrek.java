@@ -44,10 +44,10 @@ import net.minetrek.entities.projectiles.EntityPhotonTorpedo;
 import net.minetrek.items.DriverCardLol;
 import net.minetrek.items.MineTrekItems;
 
-@Mod(modid = MineTrek.MODID, version = MineTrek.VERSION, name = MineTrek.NAME,dependencies = "required-after:OpenComputers@[1.5.6,)")
+@Mod(modid = MineTrek.MODID, version = MineTrek.VERSION, name = MineTrek.NAME)
 public class MineTrek {
     public static final String MODID = "minetrek";
-    public static final String VERSION = "0.0.2a";
+    public static final String VERSION = "0.0.3a";
     public static final String NAME = "MineTrek";
     public static  boolean crash = false;
     

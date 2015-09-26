@@ -1,9 +1,6 @@
 package net.minetrek.blocks.machines;
 
-import cofh.api.energy.IEnergyProvider;
-import cofh.api.energy.IEnergyReceiver;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
@@ -22,14 +19,15 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityLockable;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IChatComponent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minetrek.items.MineTrekItems;
+import cofh.api.energy.IEnergyProvider;
+import cofh.api.energy.IEnergyReceiver;
 
-public class TileEntityAntimatterGenerator extends TileEntityLockable implements IEnergyProvider, IUpdatePlayerListBox, ISidedInventory {
+public class TileEntityCoalGenerator extends TileEntityLockable implements IEnergyProvider, IUpdatePlayerListBox, ISidedInventory {
 	private ItemStack[] inventory;
 	private int furnaceBurnTime;
 	private int currentItemBurnTime;
@@ -42,10 +40,10 @@ public class TileEntityAntimatterGenerator extends TileEntityLockable implements
 	//private int consumeRate;
     private static final int[] slotsBottom = new int[] {0};
     private static final int[] slotsSides = new int[] {0};
-	public TileEntityAntimatterGenerator(){
+	public TileEntityCoalGenerator(){
 		super();
 		inventory = new ItemStack[1];
-		setEnergyStorage(160000, 4);
+		setEnergyStorage(1600, 1);
 	}
 	@Override
 	public int getSizeInventory() {
@@ -159,10 +157,12 @@ public class TileEntityAntimatterGenerator extends TileEntityLockable implements
             if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air)
             {
                 Block block = Block.getBlockFromItem(item);
-                
+                if(block == Blocks.coal_block){
+                	return 970;
+                }
             }
             
-            if (item == MineTrekItems.antimaterstorage_full) return 1237;
+            if (item == Items.coal) return 97;
             return 0;
         }
     }
@@ -381,7 +381,7 @@ public class TileEntityAntimatterGenerator extends TileEntityLockable implements
 	}
 	@Override
 	public String getName() {
-		return this.hasCustomName() ? this.furnaceCustomName : "Antimatter Generator";
+		return this.hasCustomName() ? this.furnaceCustomName : "Coal Generator";
 	}
 	@Override
     public boolean hasCustomName()
@@ -414,7 +414,7 @@ public class TileEntityAntimatterGenerator extends TileEntityLockable implements
 	}
     public String getGuiID()
     {
-        return "minetrek:antimatterGenerator";
+        return "minetrek:coalGenerator";
     }
     public void clear()
     {

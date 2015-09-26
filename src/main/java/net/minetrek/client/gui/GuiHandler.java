@@ -14,7 +14,9 @@ import net.minetrek.blocks.GuiTorpedoLauncher;
 import net.minetrek.blocks.TileEntityPhaserBank;
 import net.minetrek.blocks.TileEntityTorpedoLauncher;
 import net.minetrek.blocks.machines.ContainerAntimatterGenerator;
+import net.minetrek.blocks.machines.ContainerCoalGenerator;
 import net.minetrek.blocks.machines.GuiAntimatterGenerator;
+import net.minetrek.blocks.machines.GuiCoalGenerator;
 import net.minetrek.blocks.machines.LaserElectronManipulatorContainer;
 import net.minetrek.blocks.machines.LaserElectronManipulatorGui;
 import net.minetrek.blocks.machines.LaserElectronManipulatorTileEntity;
@@ -25,6 +27,7 @@ import net.minetrek.blocks.machines.ParticleAcceleratorContainer;
 import net.minetrek.blocks.machines.ParticleAcceleratorGui;
 import net.minetrek.blocks.machines.ParticleAcceleratorTileEntity;
 import net.minetrek.blocks.machines.TileEntityAntimatterGenerator;
+import net.minetrek.blocks.machines.TileEntityCoalGenerator;
 
 public class GuiHandler implements IGuiHandler{
 	public static final int LEM_GUI = 0;
@@ -33,6 +36,7 @@ public class GuiHandler implements IGuiHandler{
 	public static final int PHASER_BANK_GUI = 3;
 	public static final int MAGNETIZER_GUI = 4;
 	public static final int ANTIMATTERGENERATOR_GUI = 5;
+	public static final int COALGENERATOR_GUI = 6;
 	public GuiHandler() {
 		NetworkRegistry.INSTANCE.registerGuiHandler(MineTrek.instance, this);
 	}
@@ -65,6 +69,10 @@ public class GuiHandler implements IGuiHandler{
 			if(entity != null && entity instanceof TileEntityAntimatterGenerator)
 				return new ContainerAntimatterGenerator(player.inventory, (TileEntityAntimatterGenerator) entity);
 			break;
+		case COALGENERATOR_GUI:
+			if(entity != null && entity instanceof TileEntityCoalGenerator)
+				return new ContainerCoalGenerator(player.inventory, (TileEntityCoalGenerator)entity);
+			break;
 		}
 		return null;
 	}
@@ -96,6 +104,10 @@ public class GuiHandler implements IGuiHandler{
 		case ANTIMATTERGENERATOR_GUI:
 			if(entity != null && entity instanceof TileEntityAntimatterGenerator)
 				return new GuiAntimatterGenerator(player.inventory, (TileEntityAntimatterGenerator) entity);
+			break;
+		case COALGENERATOR_GUI:
+			if(entity != null && entity instanceof TileEntityCoalGenerator)
+				return new GuiCoalGenerator(player.inventory, (TileEntityCoalGenerator)entity);
 			break;
 		}
 		return null;

@@ -78,3 +78,4 @@ tile.torpedo_launcher.name=Torpedo Launcher
 tile.phaser_bank.name=Phaser Bank
 tile.antimatterGenerator.name=Antimatterie Generator
 tile.wire.name=Kabel
+tile.coalGenerator.name=Kohlgenerator

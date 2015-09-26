@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "minetrek:blocks/coalGenerator_top",
+        "side": "minetrek:blocks/coalGenerator_side"
+    }
+}

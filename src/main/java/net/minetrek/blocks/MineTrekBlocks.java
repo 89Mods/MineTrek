@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minetrek.blocks.machines.BlockAntimatterGenerator;
+import net.minetrek.blocks.machines.BlockCoalGenerator;
 import net.minetrek.blocks.machines.LaserElectronManipulator;
 import net.minetrek.blocks.machines.Magnetizer;
 import net.minetrek.blocks.machines.ParticleAccelerator;
@@ -25,6 +26,7 @@ public class MineTrekBlocks {
 	public static Block phaser_bank;
 	public static Block wire;
 	public static Block antimatterGenerator;
+	public static Block coalGenerator;
 	public static void initialize(CreativeTabs ct) {
 		transparent_aluminum = new TransparentAluminum().setCreativeTab(ct);
 		GameRegistry.registerBlock(transparent_aluminum, "transparent_aluminum");
@@ -63,6 +65,9 @@ public class MineTrekBlocks {
 		antimatterGenerator = new BlockAntimatterGenerator().setUnlocalizedName("antimatterGenerator").setCreativeTab(ct).setStepSound(Block.soundTypeMetal).setHardness(1.0f).setResistance(5.0f);
 		GameRegistry.registerBlock(antimatterGenerator, "antimatterGenerator");
 		blockList.add("antimatterGenerator");
+		coalGenerator = new BlockCoalGenerator().setUnlocalizedName("coalGenerator").setCreativeTab(ct).setStepSound(Block.soundTypeMetal).setHardness(1.0f).setResistance(5.0f);
+		GameRegistry.registerBlock(coalGenerator, "coalGenerator");
+		blockList.add("coalGenerator");
 		
 	}
 }

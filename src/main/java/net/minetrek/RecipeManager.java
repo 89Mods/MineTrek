@@ -25,6 +25,7 @@ public class RecipeManager {
 				GameRegistry.addSmelting(MineTrekOres.tritanium_ore, new ItemStack(MineTrekItems.tritanium_ingot), 1.0F);
 				GameRegistry.addSmelting(MineTrekOres.dilithium_ore, new ItemStack(MineTrekItems.dilithium_crystal), 1.0F);
 				GameRegistry.addSmelting(MineTrekItems.rawAdvancedCircuitBoard, new ItemStack(MineTrekItems.advancedPCB), 1.0F);
+				GameRegistry.addSmelting(MineTrekOres.nitrium_ore, new ItemStack(MineTrekItems.nitrium_ingot), 1.0F);
 		//crafting
 				 //GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(MineTrekItems.coil,1), new Object[] {"###", "#X#", "###", '#', "ingotCopper", 'X', Items.iron_ingot}));
 				 GameRegistry.addRecipe(new ItemStack(MineTrekBlocks.magnetizer,1),new Object[] {"#X#", "Y Y", "#X#", '#', MineTrekItems.tritanium_ingot, 'X', MineTrekItems.coil, 'Y', Items.redstone});
@@ -49,6 +50,7 @@ public class RecipeManager {
 				 GameRegistry.addRecipe(new ItemStack(MineTrekItems.photon_torpedo,10),new Object[] {"#X#", "#Y#", "#C#", '#', MineTrekItems.tritanium_ingot, 'X', MineTrekItems.antimaterstorage_full, 'Y', Blocks.tnt, 'C', MineTrekItems.coil});
 				 GameRegistry.addRecipe(new ItemStack(MineTrekBlocks.wire,10),new Object[] {"#X#", '#', MineTrekItems.tritanium_ingot, 'X', Blocks.glass});
 				 GameRegistry.addRecipe(new ItemStack(MineTrekBlocks.antimatterGenerator,1),new Object[] {"#X#","#Y#","#Z#", '#', MineTrekItems.tritanium_ingot, 'X', MineTrekItems.antimaterstorage, 'Z', MineTrekBlocks.wire, 'Y', MineTrekItems.coil});
+				 GameRegistry.addRecipe(new ItemStack(MineTrekBlocks.coalGenerator,1),new Object[] {"#X#","#Y#","#Z#", '#', MineTrekItems.tritanium_ingot, 'X', Blocks.furnace, 'Z', MineTrekBlocks.wire, 'Y', MineTrekItems.coil});
 	   //machines
 				 MagnetizerTileEntity.addRecipe(new ItemStack(Items.iron_ingot,1), new ItemStack(MineTrekItems.magnet,1));
 				 LaserElectronManipulatorTileEntity.addRecipe(new ItemStack(MineTrekItems.antimaterstorage_water,1), new ItemStack(MineTrekItems.antimaterstorage_deuterium));
