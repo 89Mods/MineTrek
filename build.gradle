@@ -18,8 +18,9 @@ buildscript {
 apply plugin: 'forge'
 
 version = "0.0.3a"
-group = "net.minetrek" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group= "net.minetrek" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "minetrek"
+
 minecraft {
     version = "1.8-11.14.3.1502"
     runDir = "eclipse"
@@ -45,6 +46,7 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
 }
 
 processResources
