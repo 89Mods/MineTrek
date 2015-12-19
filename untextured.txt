@@ -1,0 +1,14 @@
+List of missing textures
+Feel free to create a texture for any of these and send it in here: http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/wip-mods/1443111-star-trek-mod
+or, if you dont have an minecraft forum account, email it to joshiiplays@gmail.com
+Blocks:
+Coal Generator
+Antimatter Generator
+Wire
+Warpcore
+Laser Electron Manipulator
+Magnetizer
+Items:
+Magnet
+GUIs:
+Warpcore
